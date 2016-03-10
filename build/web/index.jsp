@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>SISPAC</title>
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
         <link rel="stylesheet" href="css/index.css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
