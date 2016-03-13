@@ -1,10 +1,10 @@
 <%-- 
-    Document   : pagina_inicial
-    Created on : 05/03/2016, 22:22:24
+    Document   : pag_inicialProfessor
+    Created on : 13/03/2016, 17:47:32
     Author     : Hallessandro
 --%>
 
-<%@page import="br.edu.ifrn.sispac.modelo.Usuario"%>
+<%@page import="br.edu.ifrn.sispac.modelo.Professor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,18 +26,17 @@
             
             <div data-role="content">
                 <br>
-                <h4>Bem vindo ${usuario.nome}</h4>
-                <% Usuario u = (Usuario) request.getAttribute("usuario"); 
-                String matricula = u.getMatricula();
+                <h4>Bem vindo ${professor.nome_professor}</h4>
+                <% Professor p = (Professor) request.getAttribute("professor"); 
+                String matricula = p.getMatricula_professor();
                 
+                session.setAttribute("nv_acesso", 1);
                 session.setAttribute("matricula", matricula);
                 %>
                 
                 <br>
                 <ul data-role="listview" data-inset="true">
                     <li><a href="reserva_sala.jsp">Reserva de Sala</a></li>
-                    <li><a href="frequencia.jsp">Registrar Frequência</a></li>
-                    <li><a href="vfrequencia.jsp" data-rel="dialog">Visualizar Frequência</a></li>
                     <li><a href="vreservas.jsp" data-rel="dialog">Visualizar Reservas de Salas</a></li>
                     <li><a href="alterar_senha.jsp" data-rel="dialog">Alterar Senha</a></li>
                     <li><a href="index.jsp">Sair</a></li>

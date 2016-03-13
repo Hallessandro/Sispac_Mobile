@@ -44,18 +44,29 @@ public class alterarSenhaServlet extends HttpServlet {
         AdministradorDAO dao = new AdministradorDAO();
         HttpSession session = request.getSession();
         String matricula = (String) session.getAttribute("matricula");
+        int nv_acesso = (Integer) session.getAttribute("nv_acesso");
         
+        //JOptionPane.showMessageDialog(null, nv_acesso);
         String url;
         String senha1 = request.getParameter("senha1");
         String senha2 = request.getParameter("senha2");
         
         if(senha1.equals(senha2)){
             url = "sucesso.jsp";
-            try {
+            if(nv_acesso == 1){
+                try {
+                    dao.alterarSenhaProfessor(senha1, matricula);
+                } catch (SQLException ex) {
+                    Logger.getLogger(alterarSenhaServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                try {
                 dao.alterarSenha(senha1, matricula);
             } catch (SQLException ex) {
                 Logger.getLogger(alterarSenhaServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+            }
+            
         }else {
             url = "erro.jsp";
         }

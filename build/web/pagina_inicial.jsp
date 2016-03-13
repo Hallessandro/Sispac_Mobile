@@ -23,12 +23,6 @@
                 <h3>SISPAC</h3>
             </div>
           
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="frequencia.jsp" data-role="button">Registrar frequência</a></li>
-                    <li><a href="index.jsp" data-role="button">Sair</a></li>
-                </ul>
-            </div>
             
             <div data-role="content">
                 <br>

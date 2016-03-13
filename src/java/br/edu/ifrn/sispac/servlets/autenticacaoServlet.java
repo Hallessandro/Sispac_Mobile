@@ -7,6 +7,7 @@ package br.edu.ifrn.sispac.servlets;
 
 import br.edu.ifrn.sispac.dao.AutenticacaoDAO;
 import br.edu.ifrn.sispac.modelo.Autenticacao;
+import br.edu.ifrn.sispac.modelo.Professor;
 import br.edu.ifrn.sispac.modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,6 +43,7 @@ public class autenticacaoServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         Usuario u = null;
+        Professor p = null; 
         
         String matricula = request.getParameter("matricula");
         String senha = request.getParameter("senha");
@@ -49,25 +51,35 @@ public class autenticacaoServlet extends HttpServlet {
         AutenticacaoDAO dao = new AutenticacaoDAO();
         
         try {
+            p = dao.getProfessorByMatricula(matricula, senha);
+        } catch (SQLException ex) {
+            Logger.getLogger(autenticacaoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
             u = dao.getUsuarioByMatricula(matricula, senha);
         } catch (SQLException ex) {
             Logger.getLogger(autenticacaoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        String url;
-        if(u != null){
+        //JOptionPane.showMessageDialog(null, p);
+        String url = null;
+        if(p != null){
+            if(p.getSenha().equals(senha)){
+                request.setAttribute("professor", p);
+                url = "pag_inicialProfessor.jsp";
+            }else {
+                url = "erro.jsp";
+            }  
+        } else if(u != null){
             if(u.getSenha().equals(senha)){
+                request.setAttribute("usuario", u);
                 url = "pagina_inicial.jsp";
             }else {
                 url = "erro.jsp";
             }
-        }else{
-            url = "erro.jsp";
-        }
-        
-        //JOptionPane.showMessageDialog(null, a);
-        
-        request.setAttribute("usuario", u);
+        } 
+       
         RequestDispatcher saida = request.getRequestDispatcher(url);
         saida.forward(request, response);
     }

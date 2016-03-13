@@ -39,18 +39,9 @@ public class AdministradorDAO extends GeralDAO{
     public void alterarSenha(String senha, String matricula) throws SQLException{
         executarComando(UPDATE_SENHA, senha, matricula);
     }
-    public void alterarSenhaProfessor(Professor p) throws SQLException{
-        executarComando(UPDATE_SENHA_PROFESSOR, p.getSenha(), p.getMatricula());
+    public void alterarSenhaProfessor(String senha, String matricula) throws SQLException{
+        executarComando(UPDATE_SENHA_PROFESSOR, senha, matricula);
     }
     //FALTA ESCREVER MÉTODOS DE EXCLUIR
     
-    public static void main(String[] args) {
-        AdministradorDAO dao = new AdministradorDAO();
-        
-        try {
-            dao.alterarSenha("431", "123");
-        } catch (SQLException ex) {
-            Logger.getLogger(AdministradorDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

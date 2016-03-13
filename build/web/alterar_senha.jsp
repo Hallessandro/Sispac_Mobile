@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="br.edu.ifrn.sispac.modelo.Usuario"%>
+<%@page import="br.edu.ifrn.sispac.modelo.Professor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,6 +28,7 @@
                 <form method="post" action="alterarSenhaServlet">
                     <% 
                     String matricula = (String) session.getAttribute("matricula");
+                    int nv_acesso = (Integer) session.getAttribute("nv_acesso");
                     %>
                     <h4>Alterar Senha</h4>
                     <p><label for="senha1">Nova Senha</label><input type="text" name="senha1"></p>
