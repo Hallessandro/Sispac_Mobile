@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class FabricaConexao {
     public static Connection getConexao() throws SQLException, ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3307/sispac", "root", "SAMEmistake");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3307/db_sispac", "root", "SAMEmistake");
     }
     
     public static void fecharConexao(Connection con) throws SQLException{

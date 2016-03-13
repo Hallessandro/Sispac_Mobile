@@ -4,6 +4,7 @@
     Author     : Hallessandro
 --%>
 
+<%@page import="br.edu.ifrn.sispac.modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,12 +33,19 @@
             <div data-role="content">
                 <br>
                 <h4>Bem vindo ${usuario.nome}</h4>
+                <% Usuario u = (Usuario) request.getAttribute("usuario"); 
+                String matricula = u.getMatricula();
+                
+                session.setAttribute("matricula", matricula);
+                %>
+                
                 <br>
                 <ul data-role="listview" data-inset="true">
                     <li><a href="reserva_sala.jsp">Reserva de Sala</a></li>
                     <li><a href="frequencia.jsp">Registrar Frequência</a></li>
                     <li><a href="vfrequencia.jsp" data-rel="dialog">Visualizar Frequência</a></li>
                     <li><a href="vreservas.jsp" data-rel="dialog">Visualizar Reservas de Salas</a></li>
+                    <li><a href="alterar_senha.jsp" data-rel="dialog">Alterar Senha</a></li>
                     <li><a href="index.jsp">Sair</a></li>
                 </ul> 
             </div>

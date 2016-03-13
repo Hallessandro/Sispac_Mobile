@@ -5,8 +5,7 @@
  */
 package br.edu.ifrn.sispac.servlets;
 
-import br.edu.ifrn.sispac.dao.AutenticacaoDAO;
-import br.edu.ifrn.sispac.modelo.Autenticacao;
+import br.edu.ifrn.sispac.dao.AdministradorDAO;
 import br.edu.ifrn.sispac.modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,14 +18,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Hallessandro
  */
-@WebServlet(name = "autenticacaoServlet", urlPatterns = {"/autenticacaoServlet"})
-public class autenticacaoServlet extends HttpServlet {
+@WebServlet(name = "alterarSenhaServlet", urlPatterns = {"/alterarSenhaServlet"})
+public class alterarSenhaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,33 +41,26 @@ public class autenticacaoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        Usuario u = null;
-        
-        String matricula = request.getParameter("matricula");
-        String senha = request.getParameter("senha");
-        
-        AutenticacaoDAO dao = new AutenticacaoDAO();
-        
-        try {
-            u = dao.getUsuarioByMatricula(matricula, senha);
-        } catch (SQLException ex) {
-            Logger.getLogger(autenticacaoServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        AdministradorDAO dao = new AdministradorDAO();
+        HttpSession session = request.getSession();
+        String matricula = (String) session.getAttribute("matricula");
         
         String url;
-        if(u != null){
-            if(u.getSenha().equals(senha)){
-                url = "pagina_inicial.jsp";
-            }else {
-                url = "erro.jsp";
+        String senha1 = request.getParameter("senha1");
+        String senha2 = request.getParameter("senha2");
+        
+        if(senha1.equals(senha2)){
+            url = "sucesso.jsp";
+            try {
+                dao.alterarSenha(senha1, matricula);
+            } catch (SQLException ex) {
+                Logger.getLogger(alterarSenhaServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        }else {
             url = "erro.jsp";
         }
         
-        //JOptionPane.showMessageDialog(null, a);
-        
-        request.setAttribute("usuario", u);
+        session.setAttribute("matricula", matricula);
         RequestDispatcher saida = request.getRequestDispatcher(url);
         saida.forward(request, response);
     }
