@@ -7,7 +7,11 @@ package br.edu.ifrn.sispac.dao;
 
 import br.edu.ifrn.sispac.modelo.Professor;
 import br.edu.ifrn.sispac.modelo.Usuario;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,6 +32,7 @@ public class AdministradorDAO extends GeralDAO{
     private final String UPDATE_SENHA_PROFESSOR = //"SET SQL_SAFE_UPDATES = 0; Desabilita o safe mode"
                                         "update tbl_professor set senha=? where matricula_professor=?;";
 
+    private final String QUERY_PROFESSOR = "select nome_professor from tbl_professor";
     
     public void inserirProfessor(Professor p) throws SQLException{
                         executarComando(INSERT_PROFESSOR, p.getMatricula_professor(), p.getNome_professor(), p.getSenha());
@@ -42,6 +47,23 @@ public class AdministradorDAO extends GeralDAO{
     public void alterarSenhaProfessor(String senha, String matricula) throws SQLException{
         executarComando(UPDATE_SENHA_PROFESSOR, senha, matricula);
     }
+    
+    public List<Professor> getProfessor() throws SQLException{
+        ResultSet resultado = executarConsulta(QUERY_PROFESSOR);        
+        ArrayList<Professor> professores = new ArrayList();
+        while (resultado.next()){
+            Professor p = popularProfessor(resultado);
+            professores.add(p);
+        }
+        return professores;        
+    }
+    
+    private Professor popularProfessor(ResultSet resultado) throws SQLException{
+        Professor p = new Professor();
+        p.setNome_professor(resultado.getString("nome_professor"));
+        return p;        
+    }
     //FALTA ESCREVER MÉTODOS DE EXCLUIR
+    
     
 }

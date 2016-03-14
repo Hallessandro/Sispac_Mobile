@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,10 +44,11 @@ public class frequenciaServlet extends HttpServlet {
        
         frequencia.setData(request.getParameter("data"));
         frequencia.setHorario(request.getParameter("horario"));
-        frequencia.setNum_sala(request.getParameter("num_sala"));
+        frequencia.setNum_sala(request.getParameter("sala"));
         frequencia.setNome_professor(request.getParameter("nome_professor"));
         frequencia.setMatricula_professor(request.getParameter("matricula_professor"));
         
+        JOptionPane.showMessageDialog(null, frequencia);
         FrequenciaDAO dao = new FrequenciaDAO();
         try {
             dao.inserirFrequencia(frequencia);

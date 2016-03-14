@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.List;
 
 public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -11,10 +12,20 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -44,6 +55,43 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      br.edu.ifrn.sispac.dao.SalasDAO dao = null;
+      synchronized (_jspx_page_context) {
+        dao = (br.edu.ifrn.sispac.dao.SalasDAO) _jspx_page_context.getAttribute("dao", PageContext.PAGE_SCOPE);
+        if (dao == null){
+          dao = new br.edu.ifrn.sispac.dao.SalasDAO();
+          _jspx_page_context.setAttribute("dao", dao, PageContext.PAGE_SCOPE);
+        }
+      }
+      out.write('\n');
+      br.edu.ifrn.sispac.modelo.Sala sala = null;
+      synchronized (_jspx_page_context) {
+        sala = (br.edu.ifrn.sispac.modelo.Sala) _jspx_page_context.getAttribute("sala", PageContext.PAGE_SCOPE);
+        if (sala == null){
+          sala = new br.edu.ifrn.sispac.modelo.Sala();
+          _jspx_page_context.setAttribute("sala", sala, PageContext.PAGE_SCOPE);
+        }
+      }
+      out.write('\n');
+      br.edu.ifrn.sispac.dao.AdministradorDAO admdao = null;
+      synchronized (_jspx_page_context) {
+        admdao = (br.edu.ifrn.sispac.dao.AdministradorDAO) _jspx_page_context.getAttribute("admdao", PageContext.PAGE_SCOPE);
+        if (admdao == null){
+          admdao = new br.edu.ifrn.sispac.dao.AdministradorDAO();
+          _jspx_page_context.setAttribute("admdao", admdao, PageContext.PAGE_SCOPE);
+        }
+      }
+      out.write('\n');
+      br.edu.ifrn.sispac.modelo.Professor professor = null;
+      synchronized (_jspx_page_context) {
+        professor = (br.edu.ifrn.sispac.modelo.Professor) _jspx_page_context.getAttribute("professor", PageContext.PAGE_SCOPE);
+        if (professor == null){
+          professor = new br.edu.ifrn.sispac.modelo.Professor();
+          _jspx_page_context.setAttribute("professor", professor, PageContext.PAGE_SCOPE);
+        }
+      }
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -71,10 +119,14 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <p><legend>Registro de Frequência</legend></p>\n");
       out.write("                \n");
       out.write("                <form method=\"post\" action=\"frequenciaServlet\">\n");
-      out.write("                    <label for=\"matricula_professor\">Matrícula</label>\n");
-      out.write("                        <input type=\"text\" name=\"matricula_professor\">\n");
-      out.write("                    <label for=\"nome_professor\">Nome</label>\n");
-      out.write("                        <input type=\"text\" name=\"nome_professor\">    \n");
+      out.write("                    <label for=\"nome_professor\">Sala</label>\n");
+      out.write("                        <select name=\"nome_professor\">    \n");
+      out.write("                            ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                            \n");
+      out.write("                        </select>\n");
       out.write("                    <label for=\"data\">Data</label>\n");
       out.write("                        <input type=\"text\" name=\"data\">    \n");
       out.write("                    <label for=\"horario\">Horario</label>\n");
@@ -84,13 +136,15 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <option value=\"3T\">3T</option>\n");
       out.write("                        </select>\n");
       out.write("                    <label for=\"num_sala\">Sala</label>\n");
-      out.write("                        <select name=\"sala\">\n");
-      out.write("                            <option value=\"A101\">A101</option>\n");
-      out.write("                            <option value=\"A102\">A102</option>\n");
-      out.write("                            <option value=\"A103\">A103</option>\n");
+      out.write("                        <select name=\"sala\">    \n");
+      out.write("                            ");
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                            \n");
       out.write("                        </select>\n");
       out.write("                    \n");
-      out.write("                    <input type=\"submit\" data-role=\"button\" value=\"Registrar\" data-rel=\"dialog\">\n");
+      out.write("                    <input type=\"submit\" data-role=\"button\" value=\"Registrar\">\n");
       out.write("                </form>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
@@ -107,5 +161,89 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setVar("professor");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${admdao.professor}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                                <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${professor.nome_professor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${professor.nome_professor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option> \n");
+          out.write("                            ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setVar("sala");
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dao.salas}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                                <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sala.num_sala}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sala.num_sala}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option> \n");
+          out.write("                            ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
+    return false;
   }
 }

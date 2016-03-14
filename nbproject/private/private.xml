@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/pagina_inicial.jsp</file>
-            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/src/java/br/edu/ifrn/sispac/dao/AutenticacaoDAO.java</file>
-            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/src/java/br/edu/ifrn/sispac/servlets/autenticacaoServlet.java</file>
-            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/alterar_senha.jsp</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/src/java/br/edu/ifrn/sispac/servlets/frequenciaServlet.java</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/src/java/br/edu/ifrn/sispac/modelo/Professor.java</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/src/java/br/edu/ifrn/sispac/dao/AdministradorDAO.java</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/frequencia.jsp</file>
         </group>
     </open-files>
 </project-private>
