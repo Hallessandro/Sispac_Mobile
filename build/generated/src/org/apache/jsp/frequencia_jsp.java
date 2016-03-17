@@ -98,9 +98,31 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/jquery.mobile-1.4.5.min.css\"/>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css\">\n");
       out.write("        <script src=\"js/jquery-1.12.0.min.js\"></script>\n");
+      out.write("        <script src=\"//code.jquery.com/ui/1.11.4/jquery-ui.js\"></script>\n");
       out.write("        <script type=\"text/javascript\" src=\"js/jquery.mobile-1.4.5.min.js\"></script>\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
+      out.write("        <script>\n");
+      out.write("            $(function() {\n");
+      out.write("              var availableTags = new Array());\n");
+      out.write("\n");
+      out.write("              $('#tags').bind(\"keydown\", function (event){\n");
+      out.write("                  var data = {nome:$('#tags').val()};\n");
+      out.write("                  $.getJSON(\"frequenciaServlet\", data, function(res,est, jqXHR){\n");
+      out.write("                      availableTags.length = 0;\n");
+      out.write("                      $.each(res, function (i, item){\n");
+      out.write("                          availableTags[i] = item;\n");
+      out.write("                      });\n");
+      out.write("                  });\n");
+      out.write("              });\n");
+      out.write("\n");
+      out.write("              $( \"#tags\" ).autocomplete({\n");
+      out.write("                source: availableTags,\n");
+      out.write("                minLength = 1;\n");
+      out.write("              });\n");
+      out.write("            });\n");
+      out.write("    </script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div data-role=\"page\">\n");
@@ -110,7 +132,6 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            \n");
       out.write("            <div data-role=\"navbar\">\n");
       out.write("                <ul>\n");
-      out.write("                    <li><a href=\"reserva_sala.jsp\" data-role=\"button\">Reserva de Sala</a></li>\n");
       out.write("                    <li><a href=\"index.jsp\" data-role=\"button\">Sair</a></li>\n");
       out.write("                </ul>\n");
       out.write("            </div>\n");
@@ -119,13 +140,12 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <p><legend>Registro de Frequência</legend></p>\n");
       out.write("                \n");
       out.write("                <form method=\"post\" action=\"frequenciaServlet\">\n");
-      out.write("                    <label for=\"nome_professor\">Sala</label>\n");
-      out.write("                        <select name=\"nome_professor\">    \n");
+      out.write("                    <label for=\"nome_professor\">Professor</label>\n");
+      out.write("                        <select name=\"id_professor\">    \n");
       out.write("                            ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\n");
-      out.write("                            \n");
       out.write("                        </select>\n");
       out.write("                    <label for=\"data\">Data</label>\n");
       out.write("                        <input type=\"text\" name=\"data\">    \n");
@@ -135,13 +155,12 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <option value=\"2T\">2T</option>\n");
       out.write("                            <option value=\"3T\">3T</option>\n");
       out.write("                        </select>\n");
-      out.write("                    <label for=\"num_sala\">Sala</label>\n");
-      out.write("                        <select name=\"sala\">    \n");
+      out.write("                    <label for=\"id_sala\">Sala</label>\n");
+      out.write("                        <select name=\"id_sala\">    \n");
       out.write("                            ");
       if (_jspx_meth_c_forEach_1(_jspx_page_context))
         return;
       out.write("\n");
-      out.write("                            \n");
       out.write("                        </select>\n");
       out.write("                    \n");
       out.write("                    <input type=\"submit\" data-role=\"button\" value=\"Registrar\">\n");
@@ -180,7 +199,7 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
         do {
           out.write("\n");
           out.write("                                <option value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${professor.nome_professor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${professor.id_professor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${professor.nome_professor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -222,7 +241,7 @@ public final class frequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
         do {
           out.write("\n");
           out.write("                                <option value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sala.num_sala}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sala.id_sala}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sala.num_sala}", java.lang.String.class, (PageContext)_jspx_page_context, null));

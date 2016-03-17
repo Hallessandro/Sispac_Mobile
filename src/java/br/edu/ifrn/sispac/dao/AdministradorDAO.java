@@ -32,7 +32,9 @@ public class AdministradorDAO extends GeralDAO{
     private final String UPDATE_SENHA_PROFESSOR = //"SET SQL_SAFE_UPDATES = 0; Desabilita o safe mode"
                                         "update tbl_professor set senha=? where matricula_professor=?;";
 
-    private final String QUERY_PROFESSOR = "select nome_professor from tbl_professor";
+    private final String QUERY_PROFESSOR = "select id_professor, nome_professor from tbl_professor";
+
+    private final String QUERY_USUARIO = "select id_usuario from tbl_usuario where matricula_usuario = ?";
     
     public void inserirProfessor(Professor p) throws SQLException{
                         executarComando(INSERT_PROFESSOR, p.getMatricula_professor(), p.getNome_professor(), p.getSenha());
@@ -60,10 +62,22 @@ public class AdministradorDAO extends GeralDAO{
     
     private Professor popularProfessor(ResultSet resultado) throws SQLException{
         Professor p = new Professor();
+        p.setId_professor(resultado.getInt("id_professor"));
         p.setNome_professor(resultado.getString("nome_professor"));
         return p;        
     }
-    //FALTA ESCREVER MÉTODOS DE EXCLUIR
     
+    public int getUsuarioByMatricula(String matricula) throws SQLException{
+        ResultSet resultado = executarConsulta(QUERY_USUARIO, matricula);        
+        resultado.next();
+        Usuario u =  popularUsuario(resultado);
+        return u.getId_usuario();
+    }
+    
+    private Usuario popularUsuario(ResultSet resultado) throws SQLException{
+        Usuario u = new Usuario();
+        u.setId_usuario(resultado.getInt("id_usuario"));
+        return u;        
+    }
     
 }

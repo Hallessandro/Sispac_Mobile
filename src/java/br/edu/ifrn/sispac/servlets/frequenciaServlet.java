@@ -5,11 +5,17 @@
  */
 package br.edu.ifrn.sispac.servlets;
 
+import br.edu.ifrn.sispac.dao.AdministradorDAO;
 import br.edu.ifrn.sispac.dao.FrequenciaDAO;
+import br.edu.ifrn.sispac.dao.ProfessorDAO;
 import br.edu.ifrn.sispac.modelo.Frequencia;
+import br.edu.ifrn.sispac.modelo.Professor;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -18,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,15 +48,23 @@ public class frequenciaServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         Frequencia frequencia = new Frequencia();
-       
-        frequencia.setData(request.getParameter("data"));
-        frequencia.setHorario(request.getParameter("horario"));
-        frequencia.setNum_sala(request.getParameter("sala"));
-        frequencia.setNome_professor(request.getParameter("nome_professor"));
-        frequencia.setMatricula_professor(request.getParameter("matricula_professor"));
-        
-        JOptionPane.showMessageDialog(null, frequencia);
         FrequenciaDAO dao = new FrequenciaDAO();
+        AdministradorDAO admdao = new AdministradorDAO();
+        HttpSession session = request.getSession();
+        String matricula = (String) session.getAttribute("matricula");
+        
+        frequencia.setHorario(request.getParameter("horario"));
+        frequencia.setId_sala(Integer.parseInt(request.getParameter("id_sala")));
+        frequencia.setId_professor(Integer.parseInt(request.getParameter("id_professor")));
+        try {
+            frequencia.setId_usuario(admdao.getUsuarioByMatricula(matricula));
+        } catch (SQLException ex) {
+            Logger.getLogger(frequenciaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        frequencia.setData(request.getParameter("data"));
+        
+        //JOptionPane.showMessageDialog(null, frequencia);
+        
         try {
             dao.inserirFrequencia(frequencia);
         } catch (SQLException ex) {

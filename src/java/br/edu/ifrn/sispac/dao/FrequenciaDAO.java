@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,23 +21,22 @@ import java.util.List;
 
 public class FrequenciaDAO extends GeralDAO {
     
-    private final String INSERT = "insert into frequencia (data,"
-                                          + "horario, num_sala, nome_professor, matricula_professor) values (?,?,?,?,?);";
+    private final String INSERT = "insert into tbl_registro_frequencia (horario,"
+                                  + "tbl_sala_id_sala, tbl_professor_id_professor, "
+                                  + "tbl_usuario_id_usuario, data) values (?,?,?,?,?);";
     
-    //Atualmente essa busca vai ser meio confusa, mas depois de ter a data devidamente formatada
-    //ela fara mais sentindo, pois like poderá ser algo como %/?/% 
     
-            private final String QUERY_FREQUENCIA = "select * from frequencia "
-                                                    + "where matricula_professor = ? "                                
+            private final String QUERY_FREQUENCIA = "select * from tbl_registro_frequencia "
+                                                    + "where tbl_professor_id_professor = ? "                                
                                                     + "and data like ?; ";
                                               
             public void inserirFrequencia(Frequencia f) throws SQLException{
-                        executarComando(INSERT, f.getData(),f.getHorario(), f.getNum_sala(), f.getNome_professor(), f.getMatricula_professor());
+                        executarComando(INSERT, f.getHorario(), f.getId_sala(), f.getId_professor(), f.getId_usuario(), f.getData());
                     }
 
-            public List<Frequencia> getFrequencias(String matricula, String data) throws SQLException{
-                String dataf = "%/" + data + "/%";
-                ResultSet resultado = executarConsulta(QUERY_FREQUENCIA, matricula, dataf);        
+            public List<Frequencia> getFrequencias(int id_professor, String data) throws SQLException{
+                String dataf = "%-" + data + "-%";
+                ResultSet resultado = executarConsulta(QUERY_FREQUENCIA, id_professor, dataf);        
                 ArrayList<Frequencia> frequencias = new ArrayList<>();
                 while (resultado.next()){
                     Frequencia frequencia = popularFrequencia(resultado);
@@ -46,39 +48,14 @@ public class FrequenciaDAO extends GeralDAO {
             private Frequencia popularFrequencia(ResultSet resultado) throws SQLException{
                 
                 Frequencia f = new Frequencia();
-                
-                f.setData(resultado.getString("data"));
                 f.setHorario(resultado.getString("horario"));
-                f.setNum_sala(resultado.getString("num_sala"));
-                f.setNome_professor(resultado.getString("nome_professor"));
-                f.setMatricula_professor(resultado.getString("matricula_professor"));
+                f.setId_sala(resultado.getInt("tbl_sala_id_sala"));
+                f.setId_professor(resultado.getInt("tbl_professor_id_professor"));
+                f.setId_usuario(resultado.getInt("tbl_usuario_id_usuario"));
+                f.setData(resultado.getString("data"));
                 
                 return f;        
-            }    
-        /*
-            public static void main(String[] args) throws SQLException {
-                //Adicionar frequência
-                
-                FrequenciaDAO dao = new FrequenciaDAO();
-                
-                
-                Frequencia f = new Frequencia();
-                f.setData("05/03/2016");
-                f.setHorario("2M");
-                f.setNum_sala("A101");
-                f.setNome_professor("Batman");
-                f.setMatricula_professor("123");
-                
-                dao.inserirFrequencia(f);
-                System.out.println(f);
-                
-                
-                String data = "03";
-                String dataX = "%/" + data + "/%"; 
-                String mat = "123";
-                //System.out.println(dataX);
-                System.out.println(dao.getFrequencias(mat, dataX));
-                
-        }
-        */
+            }   
+            
+            
 }

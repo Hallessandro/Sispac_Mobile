@@ -10,7 +10,8 @@ package br.edu.ifrn.sispac.modelo;
  * @author Hallessandro
  */
 public class Sala {
- 
+    
+    int id_sala;
     String num_sala;
 
     public Sala() {
@@ -24,10 +25,20 @@ public class Sala {
         this.num_sala = num_sala;
     }
 
+    public int getId_sala() {
+        return id_sala;
+    }
+
+    public void setId_sala(int id_sala) {
+        this.id_sala = id_sala;
+    }
+
     @Override
     public String toString() {
-        return "Sala{" + "num_sala=" + num_sala + '}';
+        return "Sala{" + "id_sala=" + id_sala + ", num_sala=" + num_sala + '}';
     }
+
+    
     
     
 }

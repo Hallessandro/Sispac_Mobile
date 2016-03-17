@@ -10,59 +10,50 @@ package br.edu.ifrn.sispac.modelo;
  * @author Hallessandro
  */
 public class reservas{
-    int num_sala;
-    int data;
-    String horario;
-    String nome_reservou;
-    String matricula_reservou;
+    
+    String data_reserva;
+    String horario_reserva;
+    int id_usuario;
+    int id_sala;
 
     public reservas() {
     }
 
-    public int getNum_sala() {
-        return num_sala;
+    public String getData_reserva() {
+        return data_reserva;
     }
 
-    public void setNum_sala(int num_sala) {
-        this.num_sala = num_sala;
+    public void setData_reserva(String data_reserva) {
+        this.data_reserva = data_reserva;
     }
 
-    public int getData() {
-        return data;
+    public String getHorario_reserva() {
+        return horario_reserva;
     }
 
-    public void setData(int data) {
-        this.data = data;
+    public void setHorario_reserva(String horario_reserva) {
+        this.horario_reserva = horario_reserva;
     }
 
-    public String getHorario() {
-        return horario;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
-    public String getNome_reservou() {
-        return nome_reservou;
+    public int getId_sala() {
+        return id_sala;
     }
 
-    public void setNome_reservou(String nome_reservou) {
-        this.nome_reservou = nome_reservou;
-    }
-
-    public String getMatricula_reservou() {
-        return matricula_reservou;
-    }
-
-    public void setMatricula_reservou(String matricula_reservou) {
-        this.matricula_reservou = matricula_reservou;
+    public void setId_sala(int id_sala) {
+        this.id_sala = id_sala;
     }
 
     @Override
     public String toString() {
-        return "reservas{" + "num_sala=" + num_sala + ", data=" + data + ", horario=" + horario + ", nome_reservou=" + nome_reservou + ", matricula_reservou=" + matricula_reservou + '}';
+        return "reservas{" + "data_reserva=" + data_reserva + ", horario_reserva=" + horario_reserva + ", id_usuario=" + id_usuario + ", id_sala=" + id_sala + '}';
     }
-    
-    
+
 }

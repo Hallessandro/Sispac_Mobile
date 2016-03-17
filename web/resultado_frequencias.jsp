@@ -40,7 +40,7 @@
                         <tr>
                             <th>Dia</th>
                             <th>Horário</th>
-                            <th>Matrícula</th> 
+                            <th>Nome do Professor</th> 
                             <!-- ABRIR UMA CAIXA DE DIALOGO ACIONADA AO CLICAR EM ALGUMA LINHA
                             NA CAIXA VAI CONSTAR OS DEMAIS DADOS DA RESERVA
                             NOME E MATRICULA DE QUEM RESERVOU 
@@ -52,7 +52,7 @@
                         <tr>
                                 <td><%= f.getData() %></td>
                                 <td><%= f.getHorario() %></td>
-                                <td><%= f.getMatricula_professor() %></td>
+                                <td><%= f.getId_professor() %></td>
                         </tr>
                             <% } %>
                     </table>

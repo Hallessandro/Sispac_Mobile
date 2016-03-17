@@ -11,6 +11,7 @@ package br.edu.ifrn.sispac.modelo;
  */
 public class Professor extends Usuario{
     
+    int id_professor;
     String matricula_professor;
     String nome_professor;
     String senha;
@@ -42,12 +43,17 @@ public class Professor extends Usuario{
         this.senha = senha;
     }
 
-    @Override
-    public String toString() {
-        return "Professor{" + "matricula_professor=" + matricula_professor + ", nome_professor=" + nome_professor + ", senha=" + senha + '}';
+    public int getId_professor() {
+        return id_professor;
     }
 
-    
-    
-    
+    public void setId_professor(int id_professor) {
+        this.id_professor = id_professor;
+    }
+
+    @Override
+    public String toString() {
+        return "Professor{" + "id_professor=" + id_professor + ", matricula_professor=" + matricula_professor + ", nome_professor=" + nome_professor + ", senha=" + senha + '}';
+    }
+   
 }

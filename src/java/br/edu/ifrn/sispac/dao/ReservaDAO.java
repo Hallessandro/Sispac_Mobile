@@ -17,8 +17,8 @@ import java.util.List;
  * @author Hallessandro
  */
 public class ReservaDAO extends GeralDAO{
-        private final String INSERT = "insert into tbl_salas_reservadas (num_sala,data,"
-                                          + "horario, nome_reservou, matricula_reservou) values (?,?,?,?,?);";
+        private final String INSERT = "insert into tbl_reserva_sala (data_reserva,horario_reserva,"
+                                          + "tbl_professor_id_professor, tbl_sala_id_sala) values (?,?,?,?);";
         
             private final String QUERY_RESERVA_BY_HORARIO = "select * from tbl_salas_reservadas "
                                                             + "where num_sala = ? "
@@ -61,29 +61,4 @@ public class ReservaDAO extends GeralDAO{
                 return r;        
             }    
             
-            /*
-            public static void main(String[] args) throws SQLException {
-            
-                //Adicionar reserva
-                ReservaDAO dao = new ReservaDAO();
-            
-                reservas r = new reservas();
-                r.setNum_sala(102);
-                r.setData(0402016);
-                r.setHorario("2M");
-                r.setNome_reservou("Batman");
-                r.setMatricula_reservou("321");
-                dao.inserirReserva(r);
-                System.out.println(r);
-           
-            //Consultar todos os registros de acordo com o dia
-            //5032016
-            //System.out.println(dao.getReservas(5032016));
-            
-            //Consultar existência de registro
-                String horario = "1N";
-                int data = 5032016;
-                System.out.println(dao.getReservaByHorario(103, data, horario));
-    }
-     */
 }

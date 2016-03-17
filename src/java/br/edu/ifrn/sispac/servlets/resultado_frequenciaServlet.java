@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,14 +42,14 @@ public class resultado_frequenciaServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String matricula = request.getParameter("matricula");
+        int id_professor = Integer.parseInt(request.getParameter("id_professor"));
         String mes = request.getParameter("mes");
-        
+        //JOptionPane.showMessageDialog(null, id_professor + mes);
         FrequenciaDAO dao = new FrequenciaDAO();
         List<Frequencia> frequencias = null; 
         
         try {
-            frequencias = dao.getFrequencias(matricula, mes);
+            frequencias = dao.getFrequencias(id_professor, mes);
         } catch (SQLException ex) {
             Logger.getLogger(resultado_frequenciaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

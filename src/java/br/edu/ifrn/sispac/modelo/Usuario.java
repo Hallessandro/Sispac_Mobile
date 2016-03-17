@@ -10,7 +10,8 @@ package br.edu.ifrn.sispac.modelo;
  * @author Hallessandro
  */
 public class Usuario {
- 
+
+    int id_usuario;
     String matricula;
     String nome;
     int nv_acesso;
@@ -51,10 +52,20 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" + "matricula=" + matricula + ", nome=" + nome + ", nv_acesso=" + nv_acesso + ", senha=" + senha + '}';
+        return "Usuario{" + "id_usuario=" + id_usuario + ", matricula=" + matricula + ", nome=" + nome + ", nv_acesso=" + nv_acesso + ", senha=" + senha + '}';
     }
+
+    
 
     
     

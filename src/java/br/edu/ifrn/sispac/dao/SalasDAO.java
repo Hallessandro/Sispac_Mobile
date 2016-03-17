@@ -26,7 +26,7 @@ public class SalasDAO extends GeralDAO{
     
     private final String UPDATE = "update tbl_sala set num_sala=? where num_sala = ?;";
     
-    private final String QUERY_SALAS = "select num_sala from tbl_sala"; 
+    private final String QUERY_SALAS = "select * from tbl_sala"; 
     
     public void inserirSala(Sala sala) throws SQLException{
         executarComando(INSERT, sala.getNum_sala());
@@ -52,6 +52,7 @@ public class SalasDAO extends GeralDAO{
     
     private Sala popularSala(ResultSet resultado) throws SQLException{
         Sala sala = new Sala();
+        sala.setId_sala(resultado.getInt("id_sala"));
         sala.setNum_sala(resultado.getString("num_sala"));
         return sala;        
     }

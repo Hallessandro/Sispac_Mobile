@@ -1,0 +1,16 @@
+SMAP
+vfrequencia_jsp.java
+JSP
+*S JSP
+*F
++ 0 vfrequencia.jsp
+vfrequencia.jsp
+*L
+5,4:54
+8,2:57,9
+10,23:75
+32:142,11
+33:153,6
+34:159
+34,25:100
+*E

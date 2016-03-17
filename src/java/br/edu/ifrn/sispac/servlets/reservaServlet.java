@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ifrn.edu.sispac.servlets;
+package br.edu.ifrn.sispac.servlets;
 
 import br.edu.ifrn.sispac.dao.ReservaDAO;
 import br.edu.ifrn.sispac.modelo.reservas;

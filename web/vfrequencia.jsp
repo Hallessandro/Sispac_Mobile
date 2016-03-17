@@ -3,8 +3,10 @@
     Created on : 06/03/2016, 21:27:56
     Author     : Hallessandro
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="dao" class="br.edu.ifrn.sispac.dao.AdministradorDAO"/>
+<jsp:useBean id="professor" class="br.edu.ifrn.sispac.modelo.Professor"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,8 +27,12 @@
                 
                 <form method="post" action="resultado_frequenciaServlet">
                     
-                    <p><label for="matricula">Matrícula</label>
-                    <input type="number" name="matricula"></p>
+                    <label for="id_professor">Professor</label>
+                        <select name="id_professor">    
+                            <c:forEach var="professor" items="${dao.professor}">
+                                <option value="${professor.id_professor}">${professor.nome_professor}</option> 
+                            </c:forEach>
+                        </select>   
                     <center><h4>Selecione o mês da frequência</h4></center>
                     <select name="mes">
                         <option value="01">Janeiro</option>

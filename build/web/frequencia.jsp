@@ -16,9 +16,31 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="js/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            $(function() {
+              var availableTags = new Array());
+
+              $('#tags').bind("keydown", function (event){
+                  var data = {nome:$('#tags').val()};
+                  $.getJSON("frequenciaServlet", data, function(res,est, jqXHR){
+                      availableTags.length = 0;
+                      $.each(res, function (i, item){
+                          availableTags[i] = item;
+                      });
+                  });
+              });
+
+              $( "#tags" ).autocomplete({
+                source: availableTags,
+                minLength = 1;
+              });
+            });
+    </script>
     </head>
     <body>
         <div data-role="page">
@@ -28,7 +50,6 @@
             
             <div data-role="navbar">
                 <ul>
-                    <li><a href="reserva_sala.jsp" data-role="button">Reserva de Sala</a></li>
                     <li><a href="index.jsp" data-role="button">Sair</a></li>
                 </ul>
             </div>
@@ -37,10 +58,10 @@
                 <p><legend>Registro de Frequência</legend></p>
                 
                 <form method="post" action="frequenciaServlet">
-                    <label for="nome_professor">Sala</label>
-                        <select name="nome_professor">    
+                    <label for="nome_professor">Professor</label>
+                        <select name="id_professor">    
                             <c:forEach var="professor" items="${admdao.professor}">
-                                <option value="${professor.nome_professor}">${professor.nome_professor}</option> 
+                                <option value="${professor.id_professor}">${professor.nome_professor}</option> 
                             </c:forEach>
                         </select>
                     <label for="data">Data</label>
@@ -51,10 +72,10 @@
                             <option value="2T">2T</option>
                             <option value="3T">3T</option>
                         </select>
-                    <label for="sala">Sala</label>
-                        <select name="sala">    
+                    <label for="id_sala">Sala</label>
+                        <select name="id_sala">    
                             <c:forEach var="sala" items="${dao.salas}">
-                                <option value="${sala.num_sala}">${sala.num_sala}</option> 
+                                <option value="${sala.id_sala}">${sala.num_sala}</option> 
                             </c:forEach>
                         </select>
                     
