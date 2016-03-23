@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import br.edu.ifrn.sispac.modelo.Usuario;
 
 public final class pagina_005finicial_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -44,6 +45,7 @@ public final class pagina_005finicial_jsp extends org.apache.jasper.runtime.Http
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -61,24 +63,27 @@ public final class pagina_005finicial_jsp extends org.apache.jasper.runtime.Http
       out.write("                <h3>SISPAC</h3>\n");
       out.write("            </div>\n");
       out.write("          \n");
-      out.write("            <div data-role=\"navbar\">\n");
-      out.write("                <ul>\n");
-      out.write("                    <li><a href=\"frequencia.jsp\" data-role=\"button\">Registrar frequência</a></li>\n");
-      out.write("                    <li><a href=\"index.jsp\" data-role=\"button\">Sair</a></li>\n");
-      out.write("                </ul>\n");
-      out.write("            </div>\n");
       out.write("            \n");
       out.write("            <div data-role=\"content\">\n");
       out.write("                <br>\n");
       out.write("                <h4>Bem vindo ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</h4>\n");
+      out.write("                ");
+ Usuario u = (Usuario) request.getAttribute("usuario"); 
+                String matricula = u.getMatricula();
+                
+                session.setAttribute("matricula", matricula);
+                
+      out.write("\n");
+      out.write("                \n");
       out.write("                <br>\n");
       out.write("                <ul data-role=\"listview\" data-inset=\"true\">\n");
       out.write("                    <li><a href=\"reserva_sala.jsp\">Reserva de Sala</a></li>\n");
       out.write("                    <li><a href=\"frequencia.jsp\">Registrar Frequência</a></li>\n");
-      out.write("                    <li><a href=\"vfrequencia.jsp\">Visualizar Frequência</a></li>\n");
+      out.write("                    <li><a href=\"vfrequencia.jsp\" data-rel=\"dialog\">Visualizar Frequência</a></li>\n");
       out.write("                    <li><a href=\"vreservas.jsp\" data-rel=\"dialog\">Visualizar Reservas de Salas</a></li>\n");
+      out.write("                    <li><a href=\"alterar_senha.jsp\" data-rel=\"dialog\">Alterar Senha</a></li>\n");
       out.write("                    <li><a href=\"index.jsp\">Sair</a></li>\n");
       out.write("                </ul> \n");
       out.write("            </div>\n");

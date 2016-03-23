@@ -10,7 +10,6 @@ import br.edu.ifrn.sispac.dao.FrequenciaDAO;
 import br.edu.ifrn.sispac.dao.ProfessorDAO;
 import br.edu.ifrn.sispac.modelo.Frequencia;
 import br.edu.ifrn.sispac.modelo.Professor;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;

@@ -51,9 +51,9 @@ public final class vfrequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       br.edu.ifrn.sispac.dao.AdministradorDAO dao = null;
       synchronized (_jspx_page_context) {
         dao = (br.edu.ifrn.sispac.dao.AdministradorDAO) _jspx_page_context.getAttribute("dao", PageContext.PAGE_SCOPE);
@@ -62,6 +62,7 @@ public final class vfrequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
           _jspx_page_context.setAttribute("dao", dao, PageContext.PAGE_SCOPE);
         }
       }
+      out.write('\r');
       out.write('\n');
       br.edu.ifrn.sispac.modelo.Professor professor = null;
       synchronized (_jspx_page_context) {
@@ -71,56 +72,57 @@ public final class vfrequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
           _jspx_page_context.setAttribute("professor", professor, PageContext.PAGE_SCOPE);
         }
       }
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Visualizar Frequência</title>\n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/jquery.mobile-1.4.5.min.css\"/>\n");
-      out.write("        <script src=\"js/jquery-1.12.0.min.js\"></script>\n");
-      out.write("        <script type=\"text/javascript\" src=\"js/jquery.mobile-1.4.5.min.js\"></script>\n");
-      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        <div data-role=\"page\">\n");
-      out.write("            <div data-role=\"header\">\n");
-      out.write("                <h3>SISPAC</h3>\n");
-      out.write("            </div>\n");
-      out.write("            \n");
-      out.write("            <div data-role=\"content\">\n");
-      out.write("                \n");
-      out.write("                <form method=\"post\" action=\"resultado_frequenciaServlet\">\n");
-      out.write("                    \n");
-      out.write("                    <label for=\"id_professor\">Professor</label>\n");
-      out.write("                        <select name=\"id_professor\">    \n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <title>Visualizar Frequência</title>\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"css/jquery.mobile-1.4.5.min.css\"/>\r\n");
+      out.write("        <script src=\"js/jquery-1.12.0.min.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"js/jquery.mobile-1.4.5.min.js\"></script>\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"css/themes/sispac.css\"/>\r\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body>\r\n");
+      out.write("        <div data-role=\"page\" data-theme=\"b\">\r\n");
+      out.write("            <div data-role=\"header\">\r\n");
+      out.write("                <h3>SISPAC</h3>\r\n");
+      out.write("            </div>\r\n");
+      out.write("            \r\n");
+      out.write("            <div data-role=\"content\">\r\n");
+      out.write("                \r\n");
+      out.write("                <form method=\"post\" action=\"resultado_frequenciaServlet\">\r\n");
+      out.write("                    \r\n");
+      out.write("                    <label for=\"id_professor\">Professor</label>\r\n");
+      out.write("                        <select name=\"id_professor\">    \r\n");
       out.write("                            ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("                        </select>   \n");
-      out.write("                    <center><h4>Selecione o mês da frequência</h4></center>\n");
-      out.write("                    <select name=\"mes\">\n");
-      out.write("                        <option value=\"01\">Janeiro</option>\n");
-      out.write("                        <option value=\"02\">Fevereiro</option>\n");
-      out.write("                        <option value=\"03\">Março</option>\n");
-      out.write("                        <option value=\"04\">Abril</option>\n");
-      out.write("                        <option value=\"05\">Maio</option>\n");
-      out.write("                        <option value=\"06\">Junho</option>\n");
-      out.write("                        <option value=\"07\">Julho</option>\n");
-      out.write("                        <option value=\"08\">Agosto</option>\n");
-      out.write("                        <option value=\"09\">Setembro</option>\n");
-      out.write("                        <option value=\"10\">Outubro</option>\n");
-      out.write("                        <option value=\"11\">Novembro</option>\n");
-      out.write("                        <option value=\"12\">Dezembro</option>\n");
-      out.write("                </select>\n");
-      out.write("                    \n");
-      out.write("                    <input type=\"submit\" value=\"Buscar\">\n");
-      out.write("                </form>\n");
-      out.write("            </div>\n");
-      out.write("        </div>\n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("                        </select>   \r\n");
+      out.write("                    <center><h4>Selecione o mês da frequência</h4></center>\r\n");
+      out.write("                    <select name=\"mes\">\r\n");
+      out.write("                        <option value=\"01\">Janeiro</option>\r\n");
+      out.write("                        <option value=\"02\">Fevereiro</option>\r\n");
+      out.write("                        <option value=\"03\">Março</option>\r\n");
+      out.write("                        <option value=\"04\">Abril</option>\r\n");
+      out.write("                        <option value=\"05\">Maio</option>\r\n");
+      out.write("                        <option value=\"06\">Junho</option>\r\n");
+      out.write("                        <option value=\"07\">Julho</option>\r\n");
+      out.write("                        <option value=\"08\">Agosto</option>\r\n");
+      out.write("                        <option value=\"09\">Setembro</option>\r\n");
+      out.write("                        <option value=\"10\">Outubro</option>\r\n");
+      out.write("                        <option value=\"11\">Novembro</option>\r\n");
+      out.write("                        <option value=\"12\">Dezembro</option>\r\n");
+      out.write("                </select>\r\n");
+      out.write("                    \r\n");
+      out.write("                    <input type=\"submit\" value=\"Buscar\">\r\n");
+      out.write("                </form>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -149,13 +151,13 @@ public final class vfrequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("                                <option value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${professor.id_professor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${professor.nome_professor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</option> \n");
+          out.write("</option> \r\n");
           out.write("                            ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

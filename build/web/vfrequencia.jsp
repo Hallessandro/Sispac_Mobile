@@ -15,10 +15,11 @@
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="css/themes/sispac.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div data-role="page">
+        <div data-role="page" data-theme="b">
             <div data-role="header">
                 <h3>SISPAC</h3>
             </div>

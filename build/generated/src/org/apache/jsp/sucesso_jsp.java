@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class sucesso_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -45,32 +45,29 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
+      out.write("<!--\n");
+      out.write("To change this license header, choose License Headers in Project Properties.\n");
+      out.write("To change this template file, choose Tools | Templates\n");
+      out.write("and open the template in the editor.\n");
+      out.write("-->\n");
       out.write("<html>\n");
       out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>SISPAC</title>\n");
+      out.write("        <title>TODO supply a title</title>\n");
+      out.write("        <meta charset=\"UTF-8\">\n");
+      out.write("        <title>Testando formulários</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/jquery.mobile-1.4.5.min.css\"/>\n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/index.css\"/>\n");
       out.write("        <script src=\"js/jquery-1.12.0.min.js\"></script>\n");
       out.write("        <script type=\"text/javascript\" src=\"js/jquery.mobile-1.4.5.min.js\"></script>\n");
-      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div data-role=\"page\">\n");
-      out.write("            \n");
       out.write("            <div data-role=\"header\">\n");
-      out.write("                <img src=\"img/logo_sispac3.png\" id=\"logo\">\n");
+      out.write("                <h3>Exibindo resultados</h3>\n");
       out.write("            </div>\n");
-      out.write("          \n");
-      out.write("            \n");
-      out.write("            <div data-role=\"content\">\n");
-      out.write("                <br>\n");
-      out.write("                <form action=\"autenticacaoServlet\" method=\"post\">\n");
-      out.write("                    <label for=\"matricula\">Matrícula</label><input type=\"number\" name=\"matricula\">\n");
-      out.write("                    <label for=\"senha\">Senha</label><input type=\"password\" name=\"senha\">\n");
-      out.write("                    \n");
-      out.write("                    <input type=\"submit\" value=\"Entrar\" data-role=\"button\">\n");
-      out.write("                </form>\n");
+      out.write("            <div data-role=\"content\">                \n");
+      out.write("                <h3>Cadastrado com sucesso</h3> \n");
+      out.write("                <a href=\"pagina_inicial.jsp\">Voltar ao inicio</a>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");

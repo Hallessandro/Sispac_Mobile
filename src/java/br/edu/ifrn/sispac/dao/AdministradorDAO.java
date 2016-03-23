@@ -32,7 +32,8 @@ public class AdministradorDAO extends GeralDAO{
     private final String UPDATE_SENHA_PROFESSOR = //"SET SQL_SAFE_UPDATES = 0; Desabilita o safe mode"
                                         "update tbl_professor set senha=? where matricula_professor=?;";
 
-    private final String QUERY_PROFESSOR = "select id_professor, nome_professor from tbl_professor";
+    private final String QUERY_PROFESSOR = "select id_professor, nome_professor from tbl_professor"
+                                          + " order by nome_professor";
 
     private final String QUERY_USUARIO = "select id_usuario from tbl_usuario where matricula_usuario = ?";
     

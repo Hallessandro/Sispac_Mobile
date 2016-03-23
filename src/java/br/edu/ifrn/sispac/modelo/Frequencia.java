@@ -64,6 +64,5 @@ public class Frequencia {
     public String toString() {
         return "Frequencia{" + "horario=" + horario + ", id_sala=" + id_sala + ", id_professor=" + id_professor + ", id_usuario=" + id_usuario + ", data=" + data + '}';
     }
-
     
 }

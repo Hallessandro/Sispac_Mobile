@@ -3,8 +3,9 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import br.edu.ifrn.sispac.modelo.Professor;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class pag_005finicialProfessor_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -44,37 +45,50 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>SISPAC</title>\n");
+      out.write("        <title>JSP Page</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/jquery.mobile-1.4.5.min.css\"/>\n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/index.css\"/>\n");
       out.write("        <script src=\"js/jquery-1.12.0.min.js\"></script>\n");
       out.write("        <script type=\"text/javascript\" src=\"js/jquery.mobile-1.4.5.min.js\"></script>\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
+      out.write("        \n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div data-role=\"page\">\n");
-      out.write("            \n");
       out.write("            <div data-role=\"header\">\n");
-      out.write("                <img src=\"img/logo_sispac3.png\" id=\"logo\">\n");
+      out.write("                <h3>SISPAC</h3>\n");
       out.write("            </div>\n");
       out.write("          \n");
       out.write("            \n");
       out.write("            <div data-role=\"content\">\n");
       out.write("                <br>\n");
-      out.write("                <form action=\"autenticacaoServlet\" method=\"post\">\n");
-      out.write("                    <label for=\"matricula\">Matrícula</label><input type=\"number\" name=\"matricula\">\n");
-      out.write("                    <label for=\"senha\">Senha</label><input type=\"password\" name=\"senha\">\n");
-      out.write("                    \n");
-      out.write("                    <input type=\"submit\" value=\"Entrar\" data-role=\"button\">\n");
-      out.write("                </form>\n");
+      out.write("                <h4>Bem vindo ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${professor.nome_professor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h4>\n");
+      out.write("                ");
+ Professor p = (Professor) request.getAttribute("professor"); 
+                String matricula = p.getMatricula_professor();
+                
+                session.setAttribute("nv_acesso", 1);
+                session.setAttribute("matricula", matricula);
+                
+      out.write("\n");
+      out.write("                \n");
+      out.write("                <br>\n");
+      out.write("                <ul data-role=\"listview\" data-inset=\"true\">\n");
+      out.write("                    <li><a href=\"reserva_sala.jsp\">Reserva de Sala</a></li>\n");
+      out.write("                    <li><a href=\"vreservas.jsp\" data-rel=\"dialog\">Visualizar Reservas de Salas</a></li>\n");
+      out.write("                    <li><a href=\"alterar_senha.jsp\" data-rel=\"dialog\">Alterar Senha</a></li>\n");
+      out.write("                    <li><a href=\"index.jsp\">Sair</a></li>\n");
+      out.write("                </ul> \n");
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
