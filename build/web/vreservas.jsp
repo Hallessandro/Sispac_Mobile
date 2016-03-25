@@ -26,7 +26,7 @@
                     <h4>Informe a data da busca</h4>
                     <br>
                     <label for="data">Data</label>
-                    <input type="text" name="data">
+                    <input type="date" name="data">
                     
                     <input type="submit" value="Buscar">
                 </form>

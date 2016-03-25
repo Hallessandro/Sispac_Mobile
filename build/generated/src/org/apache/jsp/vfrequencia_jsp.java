@@ -89,7 +89,12 @@ public final class vfrequencia_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div data-role=\"header\">\r\n");
       out.write("                <h3>SISPAC</h3>\r\n");
       out.write("            </div>\r\n");
-      out.write("            \r\n");
+      out.write("            <div data-role=\"navbar\">    \r\n");
+      out.write("                <ul>\r\n");
+      out.write("                    <li><a href=\"pagina_inicial.jsp\" data-role=\"button\">Inicio</a></li>\r\n");
+      out.write("                    <li><a href=\"logout.jsp\" data-role=\"button\">Sair</a></li>\r\n");
+      out.write("                </ul>\r\n");
+      out.write("            </div>\r\n");
       out.write("            <div data-role=\"content\">\r\n");
       out.write("                \r\n");
       out.write("                <form method=\"post\" action=\"resultado_frequenciaServlet\">\r\n");

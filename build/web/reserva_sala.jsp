@@ -5,8 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="dao" class="br.edu.ifrn.sispac.dao.SalasDAO"/>
+<jsp:useBean id="sala" class="br.edu.ifrn.sispac.modelo.Sala"/>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Reserva de sala</title>
@@ -22,32 +25,36 @@
         </div>
         <div data-role="navbar">
             <ul>
-                <li><a href="frequencia.jsp" data-role="button">Registrar frequência</a></li>
-                <li><a href="index.jsp" data-role="button">Sair</a></li>
+                <li><a href="pagina_inicial.jsp" data-role="button">Inicio</a></li>
+                <li><a href="logout.jsp" data-role="button">Sair</a></li>
             </ul>
         </div>
         <div data-role="content">
             <form method="post" action="reservaServlet">
                    
                 <label for="nome">Nome:</label><input type="text" name="nome">
-                <label for="matricula">Matricula:</label><input type="text" name="matricula">
                    
                 <p><label for="sala">Sala</label>
-                    <select name="sala">
-                            <option value="101">A101</option>
-                            <option value="102">A102</option>
-                            <option value="103">A103</option>
+                    <select name="sala">    
+                            <c:forEach var="sala" items="${dao.salas}">
+                                <option value="${sala.id_sala}">${sala.num_sala}</option> 
+                            </c:forEach>
                     </select></p>
                     
                     <label for="data">Data</label>
-                        <input type="text" name="data">
+                        <input type="date" name="data">
 
-                    <div data-role="collapsible">
-                        <h3>Horários</h3>
-                        <label for="horarios">1M</label><input type="checkbox" value="1M" name="horarios">
-                        <label for="horarios">2M</label><input type="checkbox" value="2M" name="horarios">
-                        <label for="horarios">3M</label><input type="checkbox" value="3M" name="horarios">
-                    </div>
+                        <label for="horarios">Horários</label>   
+                        <select name="horarios">
+                            <option value="07:00 - 08:30">07:00 - 08:30</option>
+                            <option value="08:50 - 10:20">08:50 - 10:20</option>
+                            <option value="10:30 - 12:00">10:30 - 12:00</option>
+                            <option value="13:00 - 14:30">13:00 - 14:30</option>
+                            <option value="14:50 - 16:20">14:50 - 16:20</option>
+                            <option value="16:30 - 18:00">16:30 - 18:00</option>
+                            <option value="19:00 - 20:30">19:00 - 20:30</option>
+                            <option value="20:40 - 22:10">20:40 - 21:25</option>
+                        </select>
                     <input type="submit" data-role="button" value="Reservar">    
             </form>
             <!-- 

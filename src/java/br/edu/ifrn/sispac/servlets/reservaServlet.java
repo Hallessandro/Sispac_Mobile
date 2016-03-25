@@ -9,6 +9,9 @@ import br.edu.ifrn.sispac.dao.ReservaDAO;
 import br.edu.ifrn.sispac.modelo.reservas;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -38,19 +41,26 @@ public class reservaServlet extends HttpServlet {
             throws ServletException, IOException {
         
         reservas r = new reservas();
-        r.setNum_sala(Integer.parseInt(request.getParameter("sala")));
-        r.setData(Integer.parseInt(request.getParameter("data")));
-        r.setHorario(request.getParameter("horarios"));
         r.setNome_reservou(request.getParameter("nome"));
-        r.setMatricula_reservou(request.getParameter("matricula"));
+        r.setHorario_reserva(request.getParameter("horarios"));
+        r.setId_sala(Integer.parseInt(request.getParameter("sala")));
         
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date data = null;
+        try {
+            data = formato.parse(request.getParameter("data"));
+        } catch (ParseException ex) {
+            Logger.getLogger(reservaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        r.setData_reserva(data);
         try {
             new ReservaDAO().inserirReserva(r);
         } catch (SQLException ex) {
             Logger.getLogger(reservaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         request.setAttribute("reserva", r);
-        RequestDispatcher saida = request.getRequestDispatcher("sucesso.jsp");
+        RequestDispatcher saida = request.getRequestDispatcher("reserva_sala.jsp");
         saida.forward(request, response);
     }
 

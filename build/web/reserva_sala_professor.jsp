@@ -1,6 +1,6 @@
 <%-- 
-    Document   : reserva_sala
-    Created on : 05/03/2016, 22:22:14
+    Document   : reserva_sala_professor
+    Created on : 24/03/2016, 20:11:59
     Author     : Hallessandro
 --%>
 
@@ -8,6 +8,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="dao" class="br.edu.ifrn.sispac.dao.SalasDAO"/>
 <jsp:useBean id="sala" class="br.edu.ifrn.sispac.modelo.Sala"/>
+<jsp:useBean id="admdao" class="br.edu.ifrn.sispac.dao.AdministradorDAO"/>
+<jsp:useBean id="professor" class="br.edu.ifrn.sispac.modelo.Professor"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,10 +32,14 @@
             </ul>
         </div>
         <div data-role="content">
-            <form method="post" action="reservaServlet">
+            <form method="post" action="=reservaServlet">
                    
-                <label for="nome">Nome:</label><input type="text" name="nome">
-                   
+                <select name="nome">    
+                            <c:forEach var="professor" items="${admdao.professor}">
+                                <option value="${professor.nome_professor}">${professor.nome_professor}</option> 
+                            </c:forEach>
+                </select>
+                
                 <p><label for="sala">Sala</label>
                     <select name="sala">    
                             <c:forEach var="sala" items="${dao.salas}">
@@ -55,6 +61,7 @@
                             <option value="19:00 - 20:30">19:00 - 20:30</option>
                             <option value="20:40 - 22:10">20:40 - 21:25</option>
                         </select>
+                        
                     <input type="submit" data-role="button" value="Reservar">    
             </form>
             <!-- 

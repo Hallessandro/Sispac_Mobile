@@ -35,10 +35,12 @@
                 
                 <br>
                 <ul data-role="listview" data-inset="true">
-                    <li><a href="reserva_sala.jsp">Reserva de Sala</a></li>
+                    <li><a href="perfil_reserva.jsp" data-rel="dialog">Reserva de Sala</a></li>
                     <li><a href="frequencia.jsp">Registrar Frequência</a></li>
                     <li><a href="vfrequencia.jsp" data-rel="dialog">Visualizar Frequência</a></li>
                     <li><a href="vreservas.jsp" data-rel="dialog">Visualizar Reservas de Salas</a></li>
+                    <li><a href="#">Visualizar Reservas do dia</a></li>
+                    <li><a href="gerencia.jsp" data-rel="dialog">Gerenciar usuários</a></li>
                     <li><a href="alterar_senha.jsp" data-rel="dialog">Alterar Senha</a></li>
                     <li><a href="index.jsp">Sair</a></li>
                 </ul> 

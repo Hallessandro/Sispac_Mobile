@@ -50,7 +50,7 @@ public class FrequenciaDAO extends GeralDAO {
                 ArrayList<Visualizar_Frequencia> frequencias = new ArrayList<>();
                 while (resultado.next()){
                     Visualizar_Frequencia vf = popularFrequencia(resultado);
-                    JOptionPane.showMessageDialog(null, vf);
+                    //JOptionPane.showMessageDialog(null, vf);
                     frequencias.add(vf);
                 }
                 return frequencias;        
@@ -64,7 +64,7 @@ public class FrequenciaDAO extends GeralDAO {
                 
                 return vf;        
             }   
-            
+            /*
             public static void main(String[] args) {
                 FrequenciaDAO dao = new FrequenciaDAO();
             try {
@@ -73,4 +73,5 @@ public class FrequenciaDAO extends GeralDAO {
                 Logger.getLogger(FrequenciaDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+            */
 }

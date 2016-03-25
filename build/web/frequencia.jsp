@@ -21,26 +21,7 @@
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script>
-            $(function() {
-              var availableTags = new Array());
-
-              $('#tags').bind("keydown", function (event){
-                  var data = {nome:$('#tags').val()};
-                  $.getJSON("frequenciaServlet", data, function(res,est, jqXHR){
-                      availableTags.length = 0;
-                      $.each(res, function (i, item){
-                          availableTags[i] = item;
-                      });
-                  });
-              });
-
-              $( "#tags" ).autocomplete({
-                source: availableTags,
-                minLength = 1;
-              });
-            });
-    </script>
+        
     </head>
     <body>
         <div data-role="page">

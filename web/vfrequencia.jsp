@@ -23,7 +23,7 @@
             <div data-role="header">
                 <h3>SISPAC</h3>
             </div>
-            
+                
             <div data-role="content">
                 
                 <form method="post" action="resultado_frequenciaServlet">

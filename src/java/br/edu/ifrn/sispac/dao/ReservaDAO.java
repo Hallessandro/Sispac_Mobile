@@ -5,12 +5,18 @@
  */
 package br.edu.ifrn.sispac.dao;
 
+import br.edu.ifrn.sispac.modelo.Visualizar_Reserva;
 import br.edu.ifrn.sispac.modelo.reservas;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,47 +24,62 @@ import java.util.List;
  */
 public class ReservaDAO extends GeralDAO{
         private final String INSERT = "insert into tbl_reserva_sala (data_reserva,horario_reserva,"
-                                          + "tbl_professor_id_professor, tbl_sala_id_sala) values (?,?,?,?);";
+                                          + "tbl_sala_id_sala, nome_reserva) values (?,?,?,?);";
         
-            private final String QUERY_RESERVA_BY_HORARIO = "select * from tbl_salas_reservadas "
-                                                            + "where num_sala = ? "
-                                                            + "and data = ? "
-                                                            //+ "and nome_reservou = ? "
-                                                            //+ "and matricula_reservou = ? "
-                                                            + "and horario = ?;"; 
+            private final String QUERY_RESERVA = "SELECT nome_reserva, data_reserva, num_sala, horario_reserva FROM tbl_reserva_sala "
+                                                + "inner join tbl_sala on tbl_sala.id_sala = tbl_reserva_sala.tbl_sala_id_sala"
+                                                + " where data_reserva like ?;"; 
             
-            private final String QUERY_RESERVA = "select * from tbl_salas_reservadas where data = ?"; 
-
             public void inserirReserva(reservas r) throws SQLException{
-                executarComando(INSERT, r.getNum_sala(),r.getData(), r.getHorario(), r.getNome_reservou(), r.getMatricula_reservou());
+                executarComando(INSERT, r.getData_reserva(),r.getHorario_reserva(), r.getId_sala(), r.getNome_reservou());
             }
 
-
-            public reservas getReservaByHorario(int num_sala, int data, String horario) throws SQLException{
-                ResultSet resultado = executarConsulta(QUERY_RESERVA_BY_HORARIO, num_sala, data, horario);        
-                resultado.next();
-                reservas r = popularReserva(resultado);
-                return r;
-            }
-
-            public List<reservas> getReservas(int data) throws SQLException{
+            public List<Visualizar_Reserva> getReservasdoDia() throws SQLException{
+                Date data = new Date(System.currentTimeMillis());  
+                    //SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy-MM-dd/");
+                
                 ResultSet resultado = executarConsulta(QUERY_RESERVA,data);        
-                ArrayList<reservas> rsvs = new ArrayList<>();
+                ArrayList<Visualizar_Reserva> rsvs = new ArrayList<>();
                 while (resultado.next()){
-                    reservas r = popularReserva(resultado);
+                    Visualizar_Reserva r = popularReserva(resultado);
+                    rsvs.add(r);
+                }
+                return rsvs;        
+            }
+            
+            public List<Visualizar_Reserva> getReservas(String data) throws SQLException{
+                ResultSet resultado = executarConsulta(QUERY_RESERVA, data);        
+                ArrayList<Visualizar_Reserva> rsvs = new ArrayList<>();
+                while (resultado.next()){
+                    Visualizar_Reserva r = popularReserva(resultado);
                     rsvs.add(r);
                 }
                 return rsvs;        
             }
 
-            private reservas popularReserva(ResultSet resultado) throws SQLException{
-                reservas r = new reservas();
-                r.setNum_sala(resultado.getInt("num_sala"));
-                r.setData(resultado.getInt("data"));
-                r.setHorario(resultado.getString("horario"));
-                r.setNome_reservou(resultado.getString("nome_reservou"));
-                r.setMatricula_reservou(resultado.getString("matricula_reservou"));
+            private Visualizar_Reserva popularReserva(ResultSet resultado) throws SQLException{
+                Visualizar_Reserva r = new Visualizar_Reserva();
+                r.setNome(resultado.getString("nome_reserva"));
+                Date dataBD = resultado.getDate("data_reserva");
+                String dataz = "dd/MM/yyyy";
+                SimpleDateFormat formatas = new SimpleDateFormat(dataz);
+                String data = formatas.format(dataBD);
+                r.setData(data);
+                r.setNum_sala(resultado.getString("num_sala"));
+                r.setHorario(resultado.getString("horario_reserva"));
+                                
                 return r;        
             }    
-            
+        
+            public static void main(String[] args) {
+                   Visualizar_Reserva r = new Visualizar_Reserva();
+                   ReservaDAO dao = new ReservaDAO();
+            try {
+                JOptionPane.showMessageDialog(null, dao.getReservasdoDia());
+            } catch (SQLException ex) {
+                Logger.getLogger(ReservaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                   
+        } 
 }

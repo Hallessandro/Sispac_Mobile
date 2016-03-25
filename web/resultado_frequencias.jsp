@@ -6,7 +6,7 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="br.edu.ifrn.sispac.modelo.Frequencia"%>
+<%@page import="br.edu.ifrn.sispac.modelo.Visualizar_Frequencia"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="professor" class="br.edu.ifrn.sispac.modelo.Frequencia" scope="session"/>
 <!DOCTYPE html>
@@ -28,8 +28,8 @@
             
             <div data-role="navbar" data-position="fixed">
                 <ul>
-                    <li><a href="frequencia.jsp" data-role="button">Registrar frequência</a></li>
-                    <li><a href="reserva_sala.jsp" data-role="button">Reservar sala</a></li>
+                    <li><a href="pagina_inicial.jsp" data-role="button">Inicio</a></li>
+                    <li><a href="logout.jsp" data-role="button">Sair</a></li>
                 </ul>
             </div>
             
@@ -47,25 +47,17 @@
                             -->
                         </tr>
                         <!-- COMO PEGAR O ARRAY DA SESSÃO? -->
-                            <% ArrayList<Frequencia> frequencia = (ArrayList<Frequencia>) request.getAttribute("resultadoF");
-                                for(Frequencia f : frequencia){ %>
+                            <% ArrayList<Visualizar_Frequencia> frequencia = (ArrayList<Visualizar_Frequencia>) request.getAttribute("resultadoF");
+                                for(Visualizar_Frequencia f : frequencia){ %>
                         <tr>
                                 <td><%= f.getData() %></td>
                                 <td><%= f.getHorario() %></td>
-                                <td><%= f.getId_professor() %></td>
+                                <td><%= f.getNome_professor() %></td>
                         </tr>
                             <% } %>
                     </table>
                 </div>
                     
-                    <div data-role="footer" data-position="fixed">
-                        <div data-role="navbar">
-                            <ul>
-                                <li><a href="pagina_inicial.jsp" data-role="button">Inicio</a></li>
-                                <li><a href="index.jsp" data-role="button">Sair</a></li>
-                            </ul>
-                        </div>
-                    </div>
         </div>
      </body>
 </html>

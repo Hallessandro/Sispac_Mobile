@@ -5,30 +5,21 @@
  */
 package br.edu.ifrn.sispac.servlets;
 
-import br.edu.ifrn.sispac.dao.FrequenciaDAO;
-import br.edu.ifrn.sispac.modelo.Frequencia;
-import br.edu.ifrn.sispac.modelo.Visualizar_Frequencia;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Hallessandro
  */
-@WebServlet(name = "resultado_frequenciaServlet", urlPatterns = {"/resultado_frequenciaServlet"})
-public class resultado_frequenciaServlet extends HttpServlet {
+@WebServlet(name = "perfil_reservaServlet", urlPatterns = {"/perfil_reservaServlet"})
+public class perfil_reservaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,24 +33,25 @@ public class resultado_frequenciaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String url = null;
+        String perfil = request.getParameter("perfil_reserva");
         
-        int id_professor = Integer.parseInt(request.getParameter("id_professor"));
-        String mes = request.getParameter("mes");
-        JOptionPane.showMessageDialog(null, id_professor + mes);
-        FrequenciaDAO dao = new FrequenciaDAO();
-        List<Visualizar_Frequencia> frequencias = null; 
-        
-        try {
-            frequencias = dao.getFrequencias(id_professor, mes);
-        } catch (SQLException ex) {
-            Logger.getLogger(resultado_frequenciaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        if(perfil.equals("professor")){
+            url = "reserva_sala_professor.jsp";
+        }else if(perfil.equals("funcionario")){
+            url = "reserva_sala.jsp";
+        }else if(perfil.equals("aluno")){
+            url = "reserva_sala.jsp";
+        }else {
+            url = "erro.jsp";
         }
         
-        request.setAttribute("resultadoF", frequencias);
-        RequestDispatcher saida = request.getRequestDispatcher("resultado_frequencias.jsp");
+        RequestDispatcher saida = request.getRequestDispatcher(url);
         saida.forward(request, response);
+        
     }
 
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

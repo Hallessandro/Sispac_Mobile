@@ -5,27 +5,30 @@
  */
 package br.edu.ifrn.sispac.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Hallessandro
  */
 public class reservas{
     
-    String data_reserva;
+    Date data_reserva;
     String horario_reserva;
-    int id_usuario;
+    String nome_reservou;
     int id_sala;
 
     public reservas() {
     }
 
-    public String getData_reserva() {
+    public Date getData_reserva() {
         return data_reserva;
     }
 
-    public void setData_reserva(String data_reserva) {
+    public void setData_reserva(Date data_reserva) {
         this.data_reserva = data_reserva;
     }
+
 
     public String getHorario_reserva() {
         return horario_reserva;
@@ -35,13 +38,15 @@ public class reservas{
         this.horario_reserva = horario_reserva;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
+    public String getNome_reservou() {
+        return nome_reservou;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setNome_reservou(String nome_reservou) {
+        this.nome_reservou = nome_reservou;
     }
+
+    
 
     public int getId_sala() {
         return id_sala;
@@ -53,7 +58,8 @@ public class reservas{
 
     @Override
     public String toString() {
-        return "reservas{" + "data_reserva=" + data_reserva + ", horario_reserva=" + horario_reserva + ", id_usuario=" + id_usuario + ", id_sala=" + id_sala + '}';
+        return "reservas{" + "data_reserva=" + data_reserva + ", horario_reserva=" + horario_reserva + ", nome_reservou=" + nome_reservou + ", id_sala=" + id_sala + '}';
     }
+    
 
 }

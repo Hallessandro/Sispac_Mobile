@@ -26,8 +26,8 @@
             
             <div data-role="navbar" data-position="fixed">
                 <ul>
-                    <li><a href="frequencia.jsp" data-role="button">Registrar frequência</a></li>
-                    <li><a href="reserva_sala.jsp" data-role="button">Reservar sala</a></li>
+                    <li><a href="pagina_inicial.jsp" data-role="button">Inicio</a></li>
+                    <li><a href="logout.jsp" data-role="button">Sair</a></li>
                 </ul>
             </div>
             
@@ -48,22 +48,14 @@
                             <% ArrayList<reservas> rsvs = (ArrayList<reservas>) request.getAttribute("resultado");
                                 for(reservas r : rsvs){ %>
                         <tr>
-                                <td><%= r.getNum_sala() %></td>
-                                <td><%= r.getData() %></td>
-                                <td><%= r.getHorario() %></td>
+                                <td><%= r.getData_reserva() %></td>
+                                <td><%= r.getHorario_reserva() %></td>
+                                <td><%= r.getNome_reservou() %></td>
                         </tr>
                             <% } %>
                     </table>
                 </div>
                     
-                    <div data-role="footer" data-position="fixed">
-                        <div data-role="navbar">
-                            <ul>
-                                <li><a href="pagina_inicial.jsp" data-role="button">Inicio</a></li>
-                                <li><a href="index.jsp" data-role="button">Sair</a></li>
-                            </ul>
-                        </div>
-                    </div>
         </div>
      </body>
 </html>

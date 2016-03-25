@@ -6,11 +6,13 @@
 package br.edu.ifrn.sispac.servlets;
 
 import br.edu.ifrn.sispac.dao.ReservaDAO;
+import br.edu.ifrn.sispac.modelo.Visualizar_Reserva;
 import br.edu.ifrn.sispac.modelo.reservas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,10 +44,10 @@ public class resultado_reservasServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        int data = Integer.parseInt(request.getParameter("data"));
+        String data = request.getParameter("data");
         
         ReservaDAO dao = new ReservaDAO();
-        List<reservas> rsvs = null;
+        List<Visualizar_Reserva> rsvs = null;
         try {
             rsvs = dao.getReservas(data);
             //JOptionPane.showMessageDialog(null, rsvs);
