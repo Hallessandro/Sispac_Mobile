@@ -30,6 +30,12 @@ public class ReservaDAO extends GeralDAO{
                                                 + "inner join tbl_sala on tbl_sala.id_sala = tbl_reserva_sala.tbl_sala_id_sala"
                                                 + " where data_reserva like ?;"; 
             
+            private final String QUERY_RESERVA_PROFESSOR = "select nome_reserva, data_reserva, num_sala, horario_reserva from tbl_reserva_sala "
+                                                + "inner join tbl_sala on tbl_sala.id_sala = tbl_reserva_sala.tbl_sala_id_sala "
+                                                + "where nome_reserva = ? "                            
+                                                + "and data_reserva like ? "
+                                                + "order by data_reserva; ";
+            
             public void inserirReserva(reservas r) throws SQLException{
                 executarComando(INSERT, r.getData_reserva(),r.getHorario_reserva(), r.getId_sala(), r.getNome_reservou());
             }
@@ -58,6 +64,17 @@ public class ReservaDAO extends GeralDAO{
                 return rsvs;        
             }
 
+            public List<Visualizar_Reserva> getReservasProfessor(String nome, String data) throws SQLException{
+                String dataf = "%-" + data + "-%";
+                ResultSet resultado = executarConsulta(QUERY_RESERVA_PROFESSOR, nome, dataf);        
+                ArrayList<Visualizar_Reserva> rsvs = new ArrayList<>();
+                while (resultado.next()){
+                    Visualizar_Reserva r = popularReserva(resultado);
+                    rsvs.add(r);
+                }
+                return rsvs;        
+            }
+            
             private Visualizar_Reserva popularReserva(ResultSet resultado) throws SQLException{
                 Visualizar_Reserva r = new Visualizar_Reserva();
                 r.setNome(resultado.getString("nome_reserva"));
@@ -76,10 +93,10 @@ public class ReservaDAO extends GeralDAO{
                    Visualizar_Reserva r = new Visualizar_Reserva();
                    ReservaDAO dao = new ReservaDAO();
             try {
-                JOptionPane.showMessageDialog(null, dao.getReservasdoDia());
+                JOptionPane.showMessageDialog(null, dao.getReservasProfessor("João Nascimento", "03"));
             } catch (SQLException ex) {
                 Logger.getLogger(ReservaDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
                    
-        } 
+        }  
 }

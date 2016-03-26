@@ -20,6 +20,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,7 +43,10 @@ public class reservaServlet extends HttpServlet {
             throws ServletException, IOException {
         
         reservas r = new reservas();
-        r.setNome_reservou(request.getParameter("nome"));
+        HttpSession session=request.getSession(false);  
+        String nome = (String) session.getAttribute("nome");
+        //JOptionPane.showMessageDialog(null, nome);
+        r.setNome_reservou(nome);
         r.setHorario_reserva(request.getParameter("horarios"));
         r.setId_sala(Integer.parseInt(request.getParameter("sala")));
         
@@ -60,7 +65,7 @@ public class reservaServlet extends HttpServlet {
         }
         
         request.setAttribute("reserva", r);
-        RequestDispatcher saida = request.getRequestDispatcher("reserva_sala.jsp");
+        RequestDispatcher saida = request.getRequestDispatcher("reserva_sala_professor.jsp");
         saida.forward(request, response);
     }
 

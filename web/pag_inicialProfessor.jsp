@@ -30,7 +30,9 @@
                 <h4>Bem vindo ${professor.nome_professor}</h4>
                 <% Professor p = (Professor) request.getAttribute("professor"); 
                 String matricula = p.getMatricula_professor();
+                String nome_professr = p.getNome_professor();
                 
+                session.setAttribute("nome", nome_professr);
                 session.setAttribute("nv_acesso", 1);
                 session.setAttribute("matricula", matricula);
                 %>

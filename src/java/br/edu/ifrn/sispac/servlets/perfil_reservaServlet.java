@@ -37,7 +37,7 @@ public class perfil_reservaServlet extends HttpServlet {
         String perfil = request.getParameter("perfil_reserva");
         
         if(perfil.equals("professor")){
-            url = "reserva_sala_professor.jsp";
+            url = "reserva_sala_professor2.jsp";
         }else if(perfil.equals("funcionario")){
             url = "reserva_sala.jsp";
         }else if(perfil.equals("aluno")){

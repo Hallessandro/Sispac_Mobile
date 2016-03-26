@@ -4,6 +4,8 @@
     Author     : Hallessandro
 --%>
 
+<%@page import="javax.swing.JOptionPane"%>
+<%@page import="br.edu.ifrn.sispac.modelo.Professor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -49,3 +51,4 @@
         
     </body>
 </html>
+

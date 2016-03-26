@@ -35,12 +35,6 @@
         <div data-role="content">
             <form method="post" action="reservaServlet">
                    
-                <select name="nome">    
-                            <c:forEach var="professor" items="${admdao.professor}">
-                                <option value="${professor.nome_professor}">${professor.nome_professor}</option> 
-                            </c:forEach>
-                </select>
-                
                 <p><label for="sala">Sala</label>
                     <select name="sala">    
                             <c:forEach var="sala" items="${dao.salas}">

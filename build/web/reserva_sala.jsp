@@ -30,7 +30,7 @@
             </ul>
         </div>
         <div data-role="content">
-            <form method="post" action="reservaServlet">
+            <form method="post" action="reservaServlet2">
                    
                 <label for="nome">Nome:</label><input type="text" name="nome">
                    

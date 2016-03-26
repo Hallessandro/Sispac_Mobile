@@ -6,27 +6,29 @@
 package br.edu.ifrn.sispac.servlets;
 
 import br.edu.ifrn.sispac.dao.ReservaDAO;
+import br.edu.ifrn.sispac.modelo.reservas;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import br.edu.ifrn.sispac.modelo.Professor;
-import br.edu.ifrn.sispac.modelo.Visualizar_Reserva;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author Hallessandro
  */
-@WebServlet(name = "vreservas_profServlet", urlPatterns = {"/vreservas_profServlet"})
-public class vreservas_profServlet extends HttpServlet {
+@WebServlet(name = "reservaServlet2", urlPatterns = {"/reservaServlet2"})
+public class reservaServlet2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,21 +42,28 @@ public class vreservas_profServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ReservaDAO dao = new ReservaDAO();
-        HttpSession session=request.getSession(false);  
-        String nome = (String) session.getAttribute("nome");
-        String mes = request.getParameter("mes");
+        reservas r = new reservas();
+        r.setNome_reservou(request.getParameter("nome"));
+        r.setHorario_reserva(request.getParameter("horarios"));
+        r.setId_sala(Integer.parseInt(request.getParameter("sala")));
         
-        List<Visualizar_Reserva> rsvs = null;
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date data = null;
         try {
-            rsvs = dao.getReservasProfessor(nome, mes);
-            //JOptionPane.showMessageDialog(null, rsvs);
-            
+            data = formato.parse(request.getParameter("data"));
+        } catch (ParseException ex) {
+            Logger.getLogger(reservaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        r.setData_reserva(data);
+        try {
+            new ReservaDAO().inserirReserva(r);
         } catch (SQLException ex) {
-            Logger.getLogger(resultado_reservasServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(reservaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        JOptionPane.showMessageDialog(null, rsvs);
+        request.setAttribute("reserva", r);
+        RequestDispatcher saida = request.getRequestDispatcher("perfil_reserva.jsp");
+        saida.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
