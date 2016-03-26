@@ -14,7 +14,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Hallessandro
@@ -60,7 +62,11 @@ public class FrequenciaDAO extends GeralDAO {
                 Visualizar_Frequencia vf = new Visualizar_Frequencia();
                 vf.setNome_professor(resultado.getString("nome_professor"));
                 vf.setHorario(resultado.getString("horario"));
-                vf.setData(resultado.getString("data"));
+                Date dataBD = resultado.getDate("data");
+                String dataz = "dd/MM/yyyy";
+                SimpleDateFormat formatas = new SimpleDateFormat(dataz);
+                String data = formatas.format(dataBD);
+                vf.setData(data);
                 
                 return vf;        
             }   
@@ -68,10 +74,10 @@ public class FrequenciaDAO extends GeralDAO {
             public static void main(String[] args) {
                 FrequenciaDAO dao = new FrequenciaDAO();
             try {
-                dao.getFrequencias(6, "03");
+                JOptionPane.showMessageDialog(null, dao.getFrequencias(6, "03"));
             } catch (SQLException ex) {
                 Logger.getLogger(FrequenciaDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-            */
+        } */
+            
 }

@@ -5,6 +5,8 @@
  */
 package br.edu.ifrn.sispac.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Hallessandro
@@ -15,7 +17,7 @@ public class Frequencia {
     int id_sala;
     int id_professor;
     int id_usuario;
-    String data;
+    Date data;
     
     public Frequencia() {
     }
@@ -52,11 +54,11 @@ public class Frequencia {
         this.id_usuario = id_usuario;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -64,5 +66,7 @@ public class Frequencia {
     public String toString() {
         return "Frequencia{" + "horario=" + horario + ", id_sala=" + id_sala + ", id_professor=" + id_professor + ", id_usuario=" + id_usuario + ", data=" + data + '}';
     }
+
+    
     
 }

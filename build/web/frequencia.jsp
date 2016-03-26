@@ -17,6 +17,7 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="css/geralCSS.css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
@@ -46,12 +47,17 @@
                             </c:forEach>
                         </select>
                     <label for="data">Data</label>
-                        <input type="text" name="data">    
+                    <input type="date" name="data">    
                     <label for="horario">Horario</label>
                         <select name="horario">
-                            <option value="1T">1T</option>
-                            <option value="2T">2T</option>
-                            <option value="3T">3T</option>
+                            <option value="07:00 - 08:30">07:00 - 08:30</option>
+                            <option value="08:50 - 10:20">08:50 - 10:20</option>
+                            <option value="10:30 - 12:00">10:30 - 12:00</option>
+                            <option value="13:00 - 14:30">13:00 - 14:30</option>
+                            <option value="14:50 - 16:20">14:50 - 16:20</option>
+                            <option value="16:30 - 18:00">16:30 - 18:00</option>
+                            <option value="19:00 - 20:30">19:00 - 20:30</option>
+                            <option value="20:40 - 22:10">20:40 - 21:25</option>
                         </select>
                     <label for="id_sala">Sala</label>
                         <select name="id_sala">    

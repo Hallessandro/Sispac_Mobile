@@ -45,7 +45,7 @@ public class resultado_frequenciaServlet extends HttpServlet {
         
         int id_professor = Integer.parseInt(request.getParameter("id_professor"));
         String mes = request.getParameter("mes");
-        JOptionPane.showMessageDialog(null, id_professor + mes);
+        //JOptionPane.showMessageDialog(null, id_professor + mes);
         FrequenciaDAO dao = new FrequenciaDAO();
         List<Visualizar_Frequencia> frequencias = null; 
         

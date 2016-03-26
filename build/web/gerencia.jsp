@@ -23,7 +23,7 @@
                 <form action="gerenciaServlet" method="post">
                     <select name="gerenciar">
                         <option value="add">Adicionar Usuários</option>
-                        <option value="remove">Excluir Usuários</option>
+                        <option value="addp">Adicionar Professor</option>
                     </select>
 
                     <input type="submit" value="Confirmar">

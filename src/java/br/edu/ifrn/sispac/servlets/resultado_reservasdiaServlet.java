@@ -5,21 +5,30 @@
  */
 package br.edu.ifrn.sispac.servlets;
 
+import br.edu.ifrn.sispac.dao.ReservaDAO;
+import br.edu.ifrn.sispac.modelo.Visualizar_Reserva;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Hallessandro
  */
-@WebServlet(name = "gerenciaServlet", urlPatterns = {"/gerenciaServlet"})
-public class gerenciaServlet extends HttpServlet {
+@WebServlet(name = "resultado_reservasdiaServlet", urlPatterns = {"/resultado_reservasdiaServlet"})
+public class resultado_reservasdiaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,17 +43,18 @@ public class gerenciaServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String gerencia = request.getParameter("gerenciar");
-        String url = null;
-        if(gerencia.equals("add")){
-            url = "adicionar_usuario.jsp";
-        }else if(gerencia.equals("addp")){
-            url = "inserir_professor.jsp";
-        }else {
-            url = "erro.jsp";
+        ReservaDAO dao = new ReservaDAO();
+        List<Visualizar_Reserva> rsvs = null;
+        try {
+            rsvs = dao.getReservasdoDia();
+            //JOptionPane.showMessageDialog(null, rsvs);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(resultado_reservasServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        RequestDispatcher saida = request.getRequestDispatcher(url);
+        request.setAttribute("resultado", rsvs);
+        RequestDispatcher saida = request.getRequestDispatcher("reservas_dia.jsp");
         saida.forward(request, response);
     }
 

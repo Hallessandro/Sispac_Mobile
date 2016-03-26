@@ -53,7 +53,7 @@
                             <option value="14:50 - 16:20">14:50 - 16:20</option>
                             <option value="16:30 - 18:00">16:30 - 18:00</option>
                             <option value="19:00 - 20:30">19:00 - 20:30</option>
-                            <option value="20:40 - 22:10">20:40 - 21:25</option>
+                            <option value="20:40 - 22:10">20:40 - 22:10</option>
                         </select>
                     <input type="submit" data-role="button" value="Reservar">    
             </form>

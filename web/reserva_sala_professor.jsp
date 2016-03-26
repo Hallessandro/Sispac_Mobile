@@ -16,6 +16,7 @@
     <meta charset="UTF-8">
     <title>Reserva de sala</title>
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="css/geralCSS.css"/>
     <script src="js/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +33,7 @@
             </ul>
         </div>
         <div data-role="content">
-            <form method="post" action="=reservaServlet">
+            <form method="post" action="reservaServlet">
                    
                 <select name="nome">    
                             <c:forEach var="professor" items="${admdao.professor}">

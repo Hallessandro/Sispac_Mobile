@@ -52,6 +52,7 @@ public final class pagina_005finicial_jsp extends org.apache.jasper.runtime.Http
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/jquery.mobile-1.4.5.min.css\"/>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"css/geralCSS.css\"/>\n");
       out.write("        <script src=\"js/jquery-1.12.0.min.js\"></script>\n");
       out.write("        <script type=\"text/javascript\" src=\"js/jquery.mobile-1.4.5.min.js\"></script>\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
@@ -79,10 +80,12 @@ public final class pagina_005finicial_jsp extends org.apache.jasper.runtime.Http
       out.write("                \n");
       out.write("                <br>\n");
       out.write("                <ul data-role=\"listview\" data-inset=\"true\">\n");
-      out.write("                    <li><a href=\"reserva_sala.jsp\">Reserva de Sala</a></li>\n");
+      out.write("                    <li><a href=\"perfil_reserva.jsp\" data-rel=\"dialog\">Reserva de Sala</a></li>\n");
       out.write("                    <li><a href=\"frequencia.jsp\">Registrar Frequência</a></li>\n");
       out.write("                    <li><a href=\"vfrequencia.jsp\" data-rel=\"dialog\">Visualizar Frequência</a></li>\n");
       out.write("                    <li><a href=\"vreservas.jsp\" data-rel=\"dialog\">Visualizar Reservas de Salas</a></li>\n");
+      out.write("                    <li><a href=\"#\">Visualizar Reservas do dia</a></li>\n");
+      out.write("                    <li><a href=\"gerencia.jsp\" data-rel=\"dialog\">Gerenciar usuários</a></li>\n");
       out.write("                    <li><a href=\"alterar_senha.jsp\" data-rel=\"dialog\">Alterar Senha</a></li>\n");
       out.write("                    <li><a href=\"index.jsp\">Sair</a></li>\n");
       out.write("                </ul> \n");

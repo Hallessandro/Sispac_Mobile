@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+        <link rel="stylesheet" href="css/geralCSS.css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,10 +40,10 @@
                     <li><a href="frequencia.jsp">Registrar Frequência</a></li>
                     <li><a href="vfrequencia.jsp" data-rel="dialog">Visualizar Frequência</a></li>
                     <li><a href="vreservas.jsp" data-rel="dialog">Visualizar Reservas de Salas</a></li>
-                    <li><a href="#">Visualizar Reservas do dia</a></li>
+                    <li><a href="resultado_reservasdiaServlet">Visualizar Reservas do dia</a></li>
                     <li><a href="gerencia.jsp" data-rel="dialog">Gerenciar usuários</a></li>
                     <li><a href="alterar_senha.jsp" data-rel="dialog">Alterar Senha</a></li>
-                    <li><a href="index.jsp">Sair</a></li>
+                    <li><a href="logout.jsp">Sair</a></li>
                 </ul> 
             </div>
         </div>

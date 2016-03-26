@@ -13,7 +13,10 @@ import br.edu.ifrn.sispac.modelo.Professor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,7 +63,14 @@ public class frequenciaServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(frequenciaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        frequencia.setData(request.getParameter("data"));
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date data = null;
+        try {
+            data = formato.parse(request.getParameter("data"));
+        } catch (ParseException ex) {
+            Logger.getLogger(frequenciaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        frequencia.setData(data);
         
         //JOptionPane.showMessageDialog(null, frequencia);
         
@@ -71,7 +81,7 @@ public class frequenciaServlet extends HttpServlet {
         }
         
         request.setAttribute("frequencia", frequencia);
-        RequestDispatcher saida = request.getRequestDispatcher("sucesso.jsp");
+        RequestDispatcher saida = request.getRequestDispatcher("frequencia.jsp");
         saida.forward(request, response);
     }
 

@@ -10,8 +10,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Página Inicial</title>
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+        <link rel="stylesheet" href="css/geralCSS.css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,10 +37,11 @@
                 
                 <br>
                 <ul data-role="listview" data-inset="true">
-                    <li><a href="reserva_sala.jsp">Reserva de Sala</a></li>
+                    <li><a href="reserva_sala_professor.jsp">Reserva de Sala</a></li>
                     <li><a href="vreservas.jsp" data-rel="dialog">Visualizar Reservas de Salas</a></li>
+                    <li><a href="vreservas_prof.jsp" data-rel="dialog">Salas reservadas pelo usuário</a></li>
                     <li><a href="alterar_senha.jsp" data-rel="dialog">Alterar Senha</a></li>
-                    <li><a href="index.jsp">Sair</a></li>
+                    <li><a href="logout.jsp">Sair</a></li>
                 </ul> 
             </div>
         </div>

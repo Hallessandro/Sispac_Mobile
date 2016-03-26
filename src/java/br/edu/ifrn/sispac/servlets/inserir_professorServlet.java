@@ -5,8 +5,13 @@
  */
 package br.edu.ifrn.sispac.servlets;
 
+import br.edu.ifrn.sispac.dao.AdministradorDAO;
+import br.edu.ifrn.sispac.modelo.Professor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hallessandro
  */
-@WebServlet(name = "gerenciaServlet", urlPatterns = {"/gerenciaServlet"})
-public class gerenciaServlet extends HttpServlet {
+@WebServlet(name = "inserir_professorServlet", urlPatterns = {"/inserir_professorServlet"})
+public class inserir_professorServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,17 +39,20 @@ public class gerenciaServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String gerencia = request.getParameter("gerenciar");
-        String url = null;
-        if(gerencia.equals("add")){
-            url = "adicionar_usuario.jsp";
-        }else if(gerencia.equals("addp")){
-            url = "inserir_professor.jsp";
-        }else {
-            url = "erro.jsp";
+        Professor p = new Professor();
+        
+        p.setNome_professor(request.getParameter("nome"));
+        p.setMatricula_professor(request.getParameter("matricula"));
+        p.setSenha(request.getParameter("senha"));
+        
+        AdministradorDAO dao = new AdministradorDAO();
+        try {
+            dao.inserirProfessor(p);
+        } catch (SQLException ex) {
+            Logger.getLogger(inserir_usuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        RequestDispatcher saida = request.getRequestDispatcher(url);
+        RequestDispatcher saida = request.getRequestDispatcher("inserir_professor.jsp");
         saida.forward(request, response);
     }
 

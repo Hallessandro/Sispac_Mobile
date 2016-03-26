@@ -5,8 +5,13 @@
  */
 package br.edu.ifrn.sispac.servlets;
 
+import br.edu.ifrn.sispac.dao.AdministradorDAO;
+import br.edu.ifrn.sispac.modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hallessandro
  */
-@WebServlet(name = "gerenciaServlet", urlPatterns = {"/gerenciaServlet"})
-public class gerenciaServlet extends HttpServlet {
+@WebServlet(name = "inserir_usuarioServlet", urlPatterns = {"/inserir_usuarioServlet"})
+public class inserir_usuarioServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,19 +37,21 @@ public class gerenciaServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
-        String gerencia = request.getParameter("gerenciar");
-        String url = null;
-        if(gerencia.equals("add")){
-            url = "adicionar_usuario.jsp";
-        }else if(gerencia.equals("addp")){
-            url = "inserir_professor.jsp";
-        }else {
-            url = "erro.jsp";
+        Usuario u = new Usuario();
+        u.setNome(request.getParameter("nome"));
+        u.setMatricula(request.getParameter("matricula"));
+        u.setNv_acesso(Integer.parseInt(request.getParameter("nv_acesso")));
+        u.setSenha(request.getParameter("senha"));
+        
+        AdministradorDAO dao = new AdministradorDAO();
+        try {
+            dao.inserirUsuario(u);
+        } catch (SQLException ex) {
+            Logger.getLogger(inserir_usuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        RequestDispatcher saida = request.getRequestDispatcher(url);
+        RequestDispatcher saida = request.getRequestDispatcher("adicionar_usuario.jsp");
         saida.forward(request, response);
     }
 

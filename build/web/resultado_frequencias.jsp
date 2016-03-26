@@ -15,6 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Frequência mensal</title>
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+        <link rel="stylesheet" href="css/geralCSS.css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,26 +36,30 @@
             
             <div data-role="content"> 
                 <center><h4>Frequência Mensal</h4></center>
-                
-                    <table data-role="table" data-mode="columntoggle">
+                    <table data-role="table" data-mode="columntoggle" class="ui-responsive" id="myTable">
+                        <thead data-theme="b">
                         <tr>
                             <th>Dia</th>
                             <th>Horário</th>
-                            <th>Nome do Professor</th> 
+                            <th data-priority="1">Nome do Professor</th> 
+                            <th></th>
                             <!-- ABRIR UMA CAIXA DE DIALOGO ACIONADA AO CLICAR EM ALGUMA LINHA
                             NA CAIXA VAI CONSTAR OS DEMAIS DADOS DA RESERVA
                             NOME E MATRICULA DE QUEM RESERVOU 
                             -->
                         </tr>
+                        </thead>
                         <!-- COMO PEGAR O ARRAY DA SESSÃO? -->
                             <% ArrayList<Visualizar_Frequencia> frequencia = (ArrayList<Visualizar_Frequencia>) request.getAttribute("resultadoF");
                                 for(Visualizar_Frequencia f : frequencia){ %>
+                        <tbody>
                         <tr>
                                 <td><%= f.getData() %></td>
                                 <td><%= f.getHorario() %></td>
                                 <td><%= f.getNome_professor() %></td>
                         </tr>
                             <% } %>
+                        </tbody>    
                     </table>
                 </div>
                     
