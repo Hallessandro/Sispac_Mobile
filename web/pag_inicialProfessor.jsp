@@ -20,7 +20,7 @@
     </head>
     <body>
         <div data-role="page">
-            <div data-role="header">
+            <div data-role="header" data-theme="b">
                 <h3>SISPAC</h3>
             </div>
           
@@ -40,8 +40,7 @@
                 <br>
                 <ul data-role="listview" data-inset="true">
                     <li><a href="reserva_sala_professor.jsp">Reserva de Sala</a></li>
-                    <li><a href="vreservas.jsp" data-rel="dialog">Visualizar Reservas de Salas</a></li>
-                    <li><a href="vreservas_prof.jsp" data-rel="dialog">Salas reservadas pelo usuário</a></li>
+                    <li><a href="vreservas.jsp" data-rel="dialog">Visualizar suas reservas</a></li>
                     <li><a href="alterar_senha.jsp" data-rel="dialog">Alterar Senha</a></li>
                     <li><a href="logout.jsp">Sair</a></li>
                 </ul> 

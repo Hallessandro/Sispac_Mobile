@@ -58,14 +58,31 @@ public class reservaServlet extends HttpServlet {
             Logger.getLogger(reservaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         r.setData_reserva(data);
+        String url = null;
+        reservas r1 = null;
+        String datax = request.getParameter("data");
+        String horario = request.getParameter("horarios");
+        int id = Integer.parseInt(request.getParameter("sala"));
+        
         try {
-            new ReservaDAO().inserirReserva(r);
+            r1 = new ReservaDAO().getReservasByHoario(datax, horario, id);
         } catch (SQLException ex) {
             Logger.getLogger(reservaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        if(r1 != null){
+            url = "erroReservaProf.jsp";
+        }else {
+            try {
+                new ReservaDAO().inserirReserva(r);
+                url = "reserva_sala_professor.jsp";
+            } catch (SQLException ex) {
+                Logger.getLogger(reservaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         request.setAttribute("reserva", r);
-        RequestDispatcher saida = request.getRequestDispatcher("reserva_sala_professor.jsp");
+        RequestDispatcher saida = request.getRequestDispatcher(url);
         saida.forward(request, response);
     }
 

@@ -17,7 +17,7 @@
     </head>
     <body>
         <div data-role="page">
-            <div data-role="header">
+            <div data-role="header" data-theme="b">
                 <h3>SISPAC</h3>
             </div>
             

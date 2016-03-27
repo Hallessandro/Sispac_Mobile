@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,14 +56,31 @@ public class reservaServlet2 extends HttpServlet {
             Logger.getLogger(reservaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         r.setData_reserva(data);
+        
+        String url = null;
+        reservas r1 = null;
+        String datax = request.getParameter("data");
+        String horario = request.getParameter("horarios");
+        int id = Integer.parseInt(request.getParameter("sala"));
         try {
-            new ReservaDAO().inserirReserva(r);
-        } catch (SQLException ex) {
-            Logger.getLogger(reservaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            r1 = new ReservaDAO().getReservasByHoario(datax, horario, id);
+            JOptionPane.showMessageDialog(null, r1);
+                    } catch (SQLException ex) {
+            Logger.getLogger(reservaServlet2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(r1 != null){
+            url = "erroReserva.jsp";
+        }else {
+            try {
+                new ReservaDAO().inserirReserva(r);
+                url = "perfil_reserva.jsp";
+            } catch (SQLException ex) {
+                Logger.getLogger(reservaServlet2.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         request.setAttribute("reserva", r);
-        RequestDispatcher saida = request.getRequestDispatcher("perfil_reserva.jsp");
+        RequestDispatcher saida = request.getRequestDispatcher(url);
         saida.forward(request, response);
     }
 

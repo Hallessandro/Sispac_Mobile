@@ -14,9 +14,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Frequência</title>
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="css/geralCSS.css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -26,18 +25,19 @@
     </head>
     <body>
         <div data-role="page">
-            <div data-role="header" data-position="fixed">
-                <h3>SISPAC</h3>
+            <div data-role="header" data-position="fixed" data-theme="b">
+                <h3>Frequência</h3>
             </div>
             
             <div data-role="navbar">
-                <ul>
-                    <li><a href="index.jsp" data-role="button">Sair</a></li>
+                <ul data-theme="b">
+                    <li><a href="opcoesFrequencia.jsp" data-role="button" data-rel="dialog">Frequência</a></li>
+                    <li><a href="opcoesReserva.jsp" data-role="button" data-rel="dialog">Reserva</a></li>
+                    <li><a href="logout.jsp" data-role="button">Sair</a></li>
                 </ul>
             </div>
             
             <div data-role="content">
-                <p><legend>Registro de Frequência</legend></p>
                 
                 <form method="post" action="frequenciaServlet">
                     <label for="nome_professor">Professor</label>

@@ -22,15 +22,18 @@
 </head>
     <body>
                 <div data-role="page" id="reserva">
-                <div data-role="header" data-position="fixed">
-                    <h3>SISPAC</h3>
+                <div data-role="header" data-theme="b">
+                    <h3>Reservar Sala</h3>
                 </div>
+                
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="pagina_inicial.jsp" data-role="button">Inicio</a></li>
+                        <li><a href="opcoesFrequencia.jsp" data-role="button" data-rel="dialog">Frequência</a></li>
+                        <li><a href="opcoesReserva.jsp" data-role="button" data-rel="dialog">Reserva</a></li>
                         <li><a href="logout.jsp" data-role="button">Sair</a></li>
                     </ul>
                 </div>
+                    
                 <div data-role="content">
                     <form method="post" action="reservaServlet2">
                         <label for="nome">Professor</label>

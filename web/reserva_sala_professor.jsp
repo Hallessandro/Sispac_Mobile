@@ -23,8 +23,8 @@
 </head>
 <body>
     <div data-role="page" id="reserva">
-        <div data-role="header" data-position="fixed">
-            <h3>SISPAC</h3>
+        <div data-role="header" data-theme="b">
+            <h3>Reservar Sala</h3>
         </div>
         <div data-role="navbar">
             <ul>

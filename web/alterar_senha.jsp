@@ -20,8 +20,8 @@
     </head>
     <body>
         <div data-role="page">
-            <div data-role="header">
-                <h3>SISPAC</h3>
+            <div data-role="header" data-theme="b">
+                <h3>Alterar Senha</h3>
             </div>
             
             <div data-role="content">
@@ -30,7 +30,7 @@
                     String matricula = (String) session.getAttribute("matricula");
                     int nv_acesso = (Integer) session.getAttribute("nv_acesso");
                     %>
-                    <h4>Alterar Senha</h4>
+                    
                     <p><label for="senha1">Nova Senha</label><input type="text" name="senha1"></p>
                     <p><label for="senha2">Repita a senha</label><input type="text" name="senha2"></p>
 

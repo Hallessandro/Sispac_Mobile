@@ -54,7 +54,7 @@ public class vreservas_profServlet extends HttpServlet {
             Logger.getLogger(resultado_reservasServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        JOptionPane.showMessageDialog(null, rsvs);
+//        JOptionPane.showMessageDialog(null, rsvs);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

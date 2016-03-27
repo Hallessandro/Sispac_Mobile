@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import br.edu.ifrn.sispac.modelo.Usuario;
+import br.edu.ifrn.sispac.modelo.Professor;
 
 public final class alterar_005fsenha_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -45,11 +47,12 @@ public final class alterar_005fsenha_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>SISPAC</title>\n");
+      out.write("        <title>Alterar Senha</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/jquery.mobile-1.4.5.min.css\"/>\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/index.css\"/>\n");
       out.write("        <script src=\"js/jquery-1.12.0.min.js\"></script>\n");
@@ -58,12 +61,18 @@ public final class alterar_005fsenha_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div data-role=\"page\">\n");
-      out.write("            <div data-role=\"header\">\n");
+      out.write("            <div data-role=\"header\" data-theme=\"b\">\n");
       out.write("                <h3>SISPAC</h3>\n");
       out.write("            </div>\n");
       out.write("            \n");
       out.write("            <div data-role=\"content\">\n");
       out.write("                <form method=\"post\" action=\"alterarSenhaServlet\">\n");
+      out.write("                    ");
+ 
+                    String matricula = (String) session.getAttribute("matricula");
+                    int nv_acesso = (Integer) session.getAttribute("nv_acesso");
+                    
+      out.write("\n");
       out.write("                    <h4>Alterar Senha</h4>\n");
       out.write("                    <p><label for=\"senha1\">Nova Senha</label><input type=\"text\" name=\"senha1\"></p>\n");
       out.write("                    <p><label for=\"senha2\">Repita a senha</label><input type=\"text\" name=\"senha2\"></p>\n");

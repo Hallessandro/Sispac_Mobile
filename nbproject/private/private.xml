@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/src/java/br/edu/ifrn/sispac/dao/ReservaDAO.java</file>
-            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/src/java/br/edu/ifrn/sispac/servlets/vreservas_profServlet.java</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/pag_inicialProfessor.jsp</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/vfrequencia.jsp</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/vreservaProf.jsp</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/opcoesFrequencia.jsp</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/inserir_professor.jsp</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/index.jsp</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/frequencia.jsp</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/gerencia.jsp</file>
+            <file>file:/C:/Users/Hallessandro/Google%20Drive/Netbeans%20Projects/sispac_mobile/web/resultado_reservas.jsp</file>
         </group>
     </open-files>
 </project-private>

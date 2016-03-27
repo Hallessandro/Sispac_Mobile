@@ -16,7 +16,7 @@
     </head>
     <body>
         <div data-role="page">
-            <div data-role="header"><h3>SISPAC</h3></div>
+           <div data-role="header" data-theme="b"><h3>SISPAC</h3></div>
             
             <div data-role="content">
                 <h4>Reservar Sala para?</h4>

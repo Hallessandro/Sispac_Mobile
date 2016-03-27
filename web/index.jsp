@@ -27,7 +27,7 @@
             <div data-role="content">
                 <br>
                 <form action="autenticacaoServlet" method="post">
-                    <label for="matricula">Matrícula</label><input type="number" name="matricula">
+                    <label for="matricula" class="centerText">Matrícula</label><input type="number" name="matricula">
                     <label for="senha">Senha</label><input type="password" name="senha">
                     
                     <input type="submit" value="Entrar" data-role="button">

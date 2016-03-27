@@ -9,5 +9,5 @@ and open the template in the editor.
 */
 
 div {
-    overflow: scroll;
+    overflow: auto;
 }

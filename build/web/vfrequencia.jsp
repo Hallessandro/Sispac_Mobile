@@ -19,8 +19,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div data-role="page" data-theme="b">
-            <div data-role="header">
+        <div data-role="page">
+            <div data-role="header" data-theme="b">
                 <h3>SISPAC</h3>
             </div>
                 

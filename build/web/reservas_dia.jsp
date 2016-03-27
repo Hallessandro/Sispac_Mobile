@@ -16,13 +16,21 @@
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Reservas do dia</title>
     </head>
     <body>
         <div data-role="page">
-            <div data-role="header"><h3>Sispac</h3></div>
+            <div data-role="header" data-theme="b"><h3>Reservas do dia</h3></div>
+            
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="opcoesFrequencia.jsp" data-role="button" data-rel="dialog">Frequência</a></li>
+                    <li><a href="opcoesReserva.jsp" data-role="button" data-rel="dialog">Reserva</a></li>
+                    <li><a href="logout.jsp" data-role="button">Sair</a></li>
+                </ul>
+            </div>
+            
             <div data-role="content">
-                <h4>Reservas do dia</h4>
                 <table data-role="table" data-mode="columntoggle" class="ui-responsive" id="myTable">
                         <thead>
                             <tr>

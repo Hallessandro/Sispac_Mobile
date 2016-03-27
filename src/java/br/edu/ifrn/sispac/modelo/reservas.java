@@ -29,7 +29,6 @@ public class reservas{
         this.data_reserva = data_reserva;
     }
 
-
     public String getHorario_reserva() {
         return horario_reserva;
     }
